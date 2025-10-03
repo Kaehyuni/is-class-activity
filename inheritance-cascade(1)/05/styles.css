@@ -41,3 +41,12 @@ table {
 	background: #E9F5FE;
 }
 
+body {
+	color: #81967c;
+	font-family: "Palatino Linotype", Baskerville, serif;
+	padding-top: 115px;
+	background: #cde6ff url(images/bg_body.png) repeat-x;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
