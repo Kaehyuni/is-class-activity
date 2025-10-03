@@ -62,5 +62,28 @@ h2 {
 	color: #afc3d6;
 	margin-bottom: 5px;
 }
-	
+
+.main h2 {
+	color: #e8a064;
+	bordee-bottom: 2px white solid;
+	background: url(images/bullet_flower.png) no-repeat;
+	paddin: 0 0 2px 80px; /* shoving the text to the right */
+}
+
+.main p {
+	color: #616161;
+	font-family: "Palatino Linotype", Baskerville, serif;
+	font-size: 1.1em;
+	line-height: 150%;
+	margin-bottom: 10px;
+	margin-left: 80px;
+}
+
+.intro {
+	color: #6a94cc;
+	font-family; Arial, Helvetica, sans-serif;
+	font-size: 0;
+	margin-left: 0;
+	margin-bottom: 15px;
+}
 
