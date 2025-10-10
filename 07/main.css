@@ -43,3 +43,13 @@ body {
   margin-left: auto;
   padding: 15px;
 }
+
+h1 {
+  font-family: 2.75em;
+  font-family: Georgia, "Time New Roman", Times, serif;
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: 1px;
+  color: rgb(133, 161, 16);
+  text-transform: uppercase;
+}
