@@ -77,6 +77,7 @@ article {
   border: 1px dotted rgb(252, 101, 18);
   border-top: 20px solid rgb(252, 101, 18);
   border-radius: 10px; /* Changed the borders cormers to be round */
+  box-shadow: 5px 5px 10px rgb(0, 0, 0,.5);
   
 }
 
