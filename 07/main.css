@@ -36,4 +36,10 @@ html {
 body {
   background-color: rgb(255, 255, 255);
   border: 3px solid rgb(75, 75, 75);
+  box-shadow: 0 0 15px rgb(44, 82, 100,.5);
+  max-width: 760px;
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 15px;
 }
