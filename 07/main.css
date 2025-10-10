@@ -81,4 +81,10 @@ article {
   
 }
 
+article h2 {
+  border: none;
+  margin-top: 0;
+  padding: 0;
+}
+
 
