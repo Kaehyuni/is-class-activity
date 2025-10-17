@@ -99,3 +99,8 @@ html {
 	font-size: 1.5em;
 	margin-bottom: 7px;
 }
+
+.main byline{
+	font-size: 1.8em; 
+	margin: 5px 0px 25px 50px
+}
