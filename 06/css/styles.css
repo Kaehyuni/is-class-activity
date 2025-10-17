@@ -28,3 +28,26 @@ table {
 	border-spacing: 0;
 } 
 /* end reset browser styles */
+
+/* pt-sans-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/pt-sans-v18-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* slabo-27px-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Slabo 27px';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/slabo-27px-v16-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+html {
+	font-family: 'PT Sans', Arial, sans-serif;
+	font-size: 62.5%; /* This equal 10px /*
+}
