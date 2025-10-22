@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Course Decision Form</title>
+<style>
+  :root{
+    --bg:#0b1e2d;
+    --card:#12273a;
+    --ink:#eaf6ff;
+    --muted:#9ec3dd;
+    --accent:#47b3ff;
+    --accent-2:#9effa7;
+    --danger:#ff6b6b;
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    background: radial-gradient(1200px 600px at 20% 0%, #122d45, #0b1e2d 60%) fixed;
+    color:var(--ink);
+    padding:24px;
+  }
+  .wrap{
+    max-width:900px;
+    margin-inline:auto;
+  }
+  header{
+    text-align:center;
+    margin-bottom:18px;
+  }
+  h1{
+    margin:0 0 4px;
+    font-size:clamp(1.4rem, 1rem + 2vw, 2rem);
+    letter-spacing:.3px;
+  }
+  p.lead{color:var(--muted); margin:.25rem 0 0}
+  form{
+    background:var(--card);
+    border:1px solid #1c3b54;
+    border-radius:var(--radius);
+    padding:18px;
+    box-shadow:0 8px 24px rgba(0,0,0,.3);
+  }
+  fieldset{
+    border:0;
+    margin:0 0 16px;
+    padding:0;
+  }
+  .group{
+    display:grid;
+    gap:.5rem;
+    margin:14px 0 18px;
+    padding:14px;
+    border-radius:12px;
+    background:#0e2233;
+    border:1px solid #193149;
+  }
+  legend, .question{
+    font-weight:700;
+    letter-spacing:.2px;
+  }
+  .help{color:var(--muted); font-size:.92rem}
+  label{display:block}
+  input[type="text"],
+  input[type="number"],
+  select,
+  textarea{
+    width:100%;
+    padding:.7rem .85rem;
+    border-radius:10px;
+    border:1px solid #274a67;
+    background:#0b1e2d;
+    color:var(--ink);
+    outline:none;
+  }
+  textarea{min-height:110px; resize:vertical}
+  .row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  .radios{
+    display:flex; flex-wrap:wrap; gap:12px;
+  }
+  .chip{
+    display:inline-flex; align-items:center; gap:.5rem;
+    padding:.5rem .8rem; border-radius:999px;
+    background:#0b1e2d; border:1px solid #274a67;
+  }
+  .chip input{accent-color:var(--accent)}
+  .hide{display:none}
+  .actions{
+    display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+    border-top:1px solid #1c3b54; padding-top:14px; margin-top:6px;
+  }
+  button{
+    cursor:pointer;
+    border:0; border-radius:999px; padding:.75rem 1.1rem; font-weight:700;
+  }
+  .btn-primary{background:var(--accent); color:#00131e}
+  .btn-ghost{background:transparent; color:var(--ink); border:1px solid #2a4a61}
+  .note{color:var(--muted); font-size:.92rem}
+  .error{color:var(--danger); font-weight:600; margin-top:-6px}
+  #summary{
+    margin-top:18px; white-space:pre-wrap; background:#0f2436; border:1px solid #1b3a52;
+    padding:14px; border-radius:12px; display:none;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Course Decision & Transfer Reflection</h1>
+      <p class="lead">Answer a few questions to organize your thoughts before making changes.</p>
+    </header>
+
+    <form id="decisionForm" novalidate>
+      <!-- 1) Grades & Financial Aid -->
+      <fieldset class="group">
+        <div class="question">1) What’s your current grade in the class?</div>
+        <div class="row">
+          <label>
+            Course name
+            <input type="text" name="course_name" required placeholder="e.g., BIOL 1406">
+          </label>
+          <label>
+            Current grade (letter or %)
+            <input type="text" name="current_grade" required placeholder="e.g., B+ or 86%">
+          </label>
+        </div>
+
+        <div class="question">Would dropping this course affect scholarships or financial aid?</div>
+        <div class="radios" role="group" aria-label="Financial Aid Impact">
+          <label class="chip"><input type="radio" name="aid_impact" value="Yes" required> Yes</label>
+          <label class="chip"><input type="radio" name="aid_impact" value="No"> No</label>
+          <label class="chip"><input type="radio" name="aid_impact" value="Unsure"> Unsure</label>
+        </div>
+        <div id="aidDetail" class="hide">
+          <label>
+            If yes/unsure, add details
+            <textarea name="aid_details" placeholder="Minimum credit hours, SAP status, scholarship terms, etc."></textarea>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- 2) Course Load -->
+      <fieldset class="group">
+        <div class="question">2) Are you taking two classes this semester?</div>
+        <div class="radios">
+          <label class="chip"><input type="radio" name="two_classes" value="Yes" required> Yes</label>
+          <label class="chip"><input type="radio" name="two_classes" value="No"> No</label>
+        </div>
+        <div id="courseCountDetail" class="hide">
+          <label>List the other class(es)
+            <input type="text" name="other_classes" placeholder="e.g., CHEM 1411">
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- 3) Program Fit -->
+      <fieldset class="group">
+        <div class="question">3) What class is it, and does it follow your program of study?</div>
+        <div class="row">
+          <label>
+            Program of study / major
+            <input type="text" name="program" placeholder="e.g., ATEC / Biology / Design Research">
+          </label>
+          <label>
+            Does the class apply to your degree plan?
+            <select name="applies_to_program" required>
+              <option value="" disabled selected>Select…</option>
+              <option>Yes – required/core</option>
+              <option>Yes – elective</option>
+              <option>No – outside plan</option>
+              <option>Unsure</option>
+            </select>
+          </label>
+        </div>
+        <label>
+          Why/why not?
+          <textarea name="program_fit_notes" placeholder="Explain how it fits (or not) with your plan."></textarea>
+        </label>
+      </fieldset>
+
+      <!-- 4) Class Experience -->
+      <fieldset class="group">
+        <div class="question">4) How do you feel about the class?</div>
+        <div class="radios" role="group" aria-label="Class Sentiment">
+          <label class="chip"><input type="radio" name="class_feel" value="Love it" required> Love it</label>
+          <label class="chip"><input type="radio" name="class_feel" value="Like it"> Like it</label>
+          <label class="chip"><input type="radio" name="class_feel" value="Neutral"> Neutral</label>
+          <label class="chip"><input type="radio" name="class_feel" value="Dislike it"> Dislike it</label>
+          <label class="chip"><input type="radio" name="class_feel" value="Hate it"> Hate it</label>
+        </div>
+        <label>
+          Notes about your experience
+          <textarea name="class_notes" placeholder="Workload, professor, pace, resources, etc."></textarea>
+        </label>
+      </fieldset>
+
+      <!-- 5) Why UT? -->
+      <fieldset class="group">
+        <div class="question">5) Why UT? Do you think it’s the best school for you, and will it work out?</div>
+        <label>
+          Your thoughts
+          <textarea name="why_ut" placeholder="Fit, location, costs, culture, opportunities…"></textarea>
+        </label>
+      </fieldset>
+
+      <!-- 6) Transfer Interest -->
+      <fieldset class="group">
+        <div class="question">6) Do you want to transfer to a different university?</div>
+        <div class="radios">
+          <label class="chip"><input type="radio" name="transfer_interest" value="Yes" required> Yes</label>
+          <label class="chip"><input type="radio" name="transfer_interest" value="No"> No</label>
+          <label class="chip"><input type="radio" name="transfer_interest" value="Maybe"> Maybe</label>
+        </div>
+
+        <div id="transferBlock" class="hide">
+          <label>
+            If yes/maybe, within the UT system or elsewhere?
+            <select name="transfer_scope">
+              <option value="" disabled selected>Select…</option>
+              <option>UT System (e.g., UTD, UT Arlington, etc.)</option>
+              <option>Texas (non-UT)</option>
+              <option>Out-of-state</option>
+              <option>International</option>
+              <option>Unsure</option>
+            </select>
+          </label>
+          <label>
+            Target schools (optional)
+            <input type="text" name="target_schools" placeholder="e.g., UTD, UNT, UTA, SMU">
+          </label>
+          <label>
+            Reason(s) for transferring
+            <textarea name="transfer_reasons" placeholder="Program fit, costs, commute, support network, etc."></textarea>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- 7) Go back home -->
+      <fieldset class="group">
+        <div class="question">7) Would you consider going back home and attending UTD/UNT/UTA/SMU?</div>
+        <div class="radios">
+          <label class="chip"><input type="radio" name="home_option" value="Yes" required> Yes</label>
+          <label class="chip"><input type="radio" name="home_option" value="No"> No</label>
+          <label class="chip"><input type="radio" name="home_option" value="Maybe"> Maybe</label>
+        </div>
+        <label class="hide" id="homeNotesLabel">
+          Why/why not?
+          <textarea name="home_notes" placeholder="Family support, housing, cost, community, etc."></textarea>
+        </label>
+      </fieldset>
+
+      <div class="actions">
+        <button type="submit" class="btn-primary">Submit</button>
+        <button type="button" id="downloadBtn" class="btn-ghost" disabled>Download Answers (.txt)</button>
+        <span class="note">Your answers stay in your browser unless you download them.</span>
+      </div>
+
+      <div id="formError" class="error" aria-live="polite"></div>
+      <pre id="summary" aria-live="polite"></pre>
+    </form>
+  </div>
+
+<script>
+  // Utility: show/hide helpers
+  const show = el => el.classList.remove('hide');
+  const hide = el => el.classList.add('hide');
+
+  // Elements
+  const form = document.getElementById('decisionForm');
+  const formError = document.getElementById('formError');
+  const summary = document.getElementById('summary');
+  const downloadBtn = document.getElementById('downloadBtn');
+
+  // Conditional blocks
+  const aidDetail = document.getElementById('aidDetail');
+  const courseCountDetail = document.getElementById('courseCountDetail');
+  const transferBlock = document.getElementById('transferBlock');
+  const homeNotesLabel = document.getElementById('homeNotesLabel');
+
+  // Listen for radio changes to toggle follow-ups
+  form.addEventListener('change', (e) => {
+    const fd = new FormData(form);
+
+    // Aid details if Yes/Unsure
+    const aid = fd.get('aid_impact');
+    (aid === 'Yes' || aid === 'Unsure') ? show(aidDetail) : hide(aidDetail);
+
+    // If taking two classes
+    const two = fd.get('two_classes');
+    (two === 'Yes') ? show(courseCountDetail) : hide(courseCountDetail);
+
+    // Transfer follow-ups
+    const t = fd.get('transfer_interest');
+    (t === 'Yes' || t === 'Maybe') ? show(transferBlock) : hide(transferBlock);
+
+    // Home notes
+    const home = fd.get('home_option');
+    (home === 'Yes' || home === 'Maybe') ? show(homeNotesLabel) : hide(homeNotesLabel);
+  });
+
+  // Submit: validate and render summary
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    formError.textContent = '';
+
+    // Basic required validation using HTML5 + a tiny guard
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      formError.textContent = 'Please complete required fields highlighted above.';
+      return;
+    }
+
+    const fd = new FormData(form);
+    const data = Object.fromEntries(fd.entries());
+
+    // Build a readable summary
+    const lines = [];
+    lines.push('—— Course Decision Summary ——');
+    lines.push(`Course: ${data.course_name || '—'}`);
+    lines.push(`Current grade: ${data.current_grade || '—'}`);
+    lines.push(`Financial aid impact: ${data.aid_impact || '—'}`);
+    if (data.aid_details) lines.push(`Aid details: ${data.aid_details}`);
+
+    lines.push(`Two classes this semester: ${data.two_classes || '—'}`);
+    if (data.other_classes) lines.push(`Other class(es): ${data.other_classes}`);
+
+    lines.push(`Program of study: ${data.program || '—'}`);
+    lines.push(`Applies to program: ${data.applies_to_program || '—'}`);
+    if (data.program_fit_notes) lines.push(`Program fit notes: ${data.program_fit_notes}`);
+
+    lines.push(`Feeling about class: ${data.class_feel || '—'}`);
+    if (data.class_notes) lines.push(`Class notes: ${data.class_notes}`);
+
+    if (data.why_ut) lines.push(`Why UT / fit thoughts: ${data.why_ut}`);
+
+    lines.push(`Transfer interest: ${data.transfer_interest || '—'}`);
+    if (data.transfer_scope) lines.push(`Transfer scope: ${data.transfer_scope}`);
+    if (data.target_schools) lines.push(`Target schools: ${data.target_schools}`);
+    if (data.transfer_reasons) lines.push(`Transfer reasons: ${data.transfer_reasons}`);
+
+    lines.push(`Consider going back home: ${data.home_option || '—'}`);
+    if (data.home_notes) lines.push(`Home notes: ${data.home_notes}`);
+
+    summary.textContent = lines.join('\n');
+    summary.style.display = 'block';
+    downloadBtn.disabled = false;
+
+    // Optionally keep in localStorage for this session
+    try { localStorage.setItem('course-decision', JSON.stringify(data)); } catch {}
+    // Scroll to summary
+    summary.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  // Download as .txt
+  downloadBtn.addEventListener('click', () => {
+    const blob = new Blob([summary.textContent || ''], {type:'text/plain'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'course-decision-summary.txt';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  });
+</script>
+</body>
+</html>
