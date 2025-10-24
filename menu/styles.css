@@ -28,4 +28,5 @@ nav ul {
       list-style: none;
       display: flex;
       justify-content: center;
+      flex-direction: row;
 }
