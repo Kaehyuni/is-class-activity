@@ -29,5 +29,5 @@ nav ul {
       display: flex;
       justify-content: center;
       flex-direction: row;
-      gap: 20px; /*spread out the text*/
+      gap: 40px; /*spread out the text*/
 }
