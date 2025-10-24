@@ -120,4 +120,13 @@ html {
 	padding-bottom: 7px;
 }
 
+/* add a custom bullet point*/
+.announcement li{
+	list-style: none; /* Get rid of the Bullet*/
+	background-image: url(images/bullet.png);
+	background-repeat: no-repeat; 
+	padding-left: 25px;
+	margin-bottom: 10px; 
+	
+}
 
