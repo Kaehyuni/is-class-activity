@@ -61,12 +61,11 @@ p {
 /* add your styles below here */
 /* First Frame the Image and Create a Border*/ 
 img. figure {
-	float:right;
+	float: right;
 	margin: 10px;
 	border: 1px solid #777;
 	background-color: #ccc;
 	padding: 10px;
-	
 }
 
 
