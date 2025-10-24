@@ -29,6 +29,11 @@ nav ul {
       display: flex;
       justify-content: center;
       flex-direction: row;
-      flex-wrap: wrap;
       gap: 40px; /*spread out the text*/
+}
+
+nav ul li {
+      background-color: lightblue;
+      padding: 10px;
+      border-radius: 5px;
 }
