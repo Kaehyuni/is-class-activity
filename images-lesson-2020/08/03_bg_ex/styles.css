@@ -125,6 +125,7 @@ html {
 	list-style: none; /* Get rid of the Bullet*/
 	background-image: url(images/bullet.png);
 	background-repeat: no-repeat; 
+	bacground-position: 0 4px;
 	padding-left: 25px;
 	margin-bottom: 10px; 
 	
