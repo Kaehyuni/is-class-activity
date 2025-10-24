@@ -37,9 +37,11 @@
  }
 
  /*Telling the browser within the href that contains the :// */
- resources a [href*="://"] {
-  background: url (images/globe.png) no-repeat right top;
-  
+.resources a [href*="://"] {
+  background: url(images/globe.png) no-repeat right top;
+
+.resources a [href$=".pdf"] {
+  background: url(images/acrobat.png) no-repeat right top;
  }
 </style>	
 </head>
