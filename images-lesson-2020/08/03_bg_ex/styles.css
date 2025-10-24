@@ -95,7 +95,7 @@ table {
 
 html {
 	height: 100%; /*Tells the gradient to fill the whole page*/
-	background-image: linear-gradient(to bottom, rgb(176,194,213, white 700px);
+	background-image: linear-gradient(to bottom, rgb(176,194,213), white 700px);
 }
 
 .wrapper {
