@@ -85,5 +85,9 @@ figcaption {
 	font: bold 1em/normal Verdana, Arial, Helvetica, sans-serif;
 	color: #333;
 	text-align: center;
+	background-image: linear-gradient(to bottom, #e6f3ff, white); /*Have a browser draw an gradient*/
 	
 }
+
+
+
