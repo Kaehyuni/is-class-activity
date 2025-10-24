@@ -59,7 +59,7 @@ p {
 	clear: both;
 }
 /* add your styles below here */
-/* First Frame the Image and Create a Border*/ 
+/* First Frame the Image and Create a Border 
 img. figure {
 	float: right;
 	margin: 10px;
@@ -67,6 +67,13 @@ img. figure {
 	background-color: #ccc;
 	padding: 10px;
 }
+*/
 
+figure {
+	float: right;
+	width: 220px; 
+	margin: 15px 10px 5px 10px;
+	
+}
 
 
