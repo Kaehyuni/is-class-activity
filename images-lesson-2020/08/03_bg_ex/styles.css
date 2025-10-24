@@ -101,6 +101,8 @@ html {
 .wrapper {
 	background-color: #fff;
 	background-image: url(images/bg_main.jpg);
+	background-position: left top;
+	background-repeat: no-repeat;
 }
 
 
