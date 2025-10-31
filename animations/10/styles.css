@@ -82,7 +82,9 @@ nav a {
 }
 
 /* your styles here */
-
+nav a {
+	transition: all .5a;
+}
 nav a:hover {
 	transform: scale(1.5);
 	
