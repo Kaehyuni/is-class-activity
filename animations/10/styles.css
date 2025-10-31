@@ -89,12 +89,19 @@ nav a {
 nav a:hover {
 	background-color: red;
 	transform: scale(1.5);
-	
 }
 
 
 
+@keyframes logo {
+	from {
+		transform: rotate(0) scale(.5);
+	}
 
+	to {
+		transform: rotate(-720deg) scale(1);
+	}
+}
 
 
 
