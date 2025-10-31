@@ -94,10 +94,12 @@ nav a:hover {
 @keyframes logo {
 	from {
 		transform: rotate(0) scale(.5);
+		left: 120%;
 	}
 
 	to {
 		transform: rotate(-720deg) scale(1);
+		left: 0;
 	}
 }
 
