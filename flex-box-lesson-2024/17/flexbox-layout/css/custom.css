@@ -30,6 +30,9 @@
   margin-right: 300px;
 }
 
+.footer .signup {
+  flex: 1 1 250px;
+}
 .signup label {
   width: 100%;
 }
@@ -43,4 +46,6 @@
   border-radius: 0 4px 4px 0;
   padding: 0 10px;
 }
+
+
 
