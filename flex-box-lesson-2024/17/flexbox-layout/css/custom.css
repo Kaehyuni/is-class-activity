@@ -21,4 +21,7 @@
   flex-flow: column;
 }
 
+.box .more {
+  margin-top: auto;
+}
 
