@@ -33,3 +33,8 @@
 .signup label {
   width: 100%;
 }
+
+.signup input[type="email"] {
+  border-radius: 0 4px 4px 0;
+  flex: 1;
+}
