@@ -25,3 +25,8 @@
   margin-top: auto;
 }
 
+.footer .copyright { 
+  flex: 2 1 500px;
+  margin-right: 300px;
+}
+
