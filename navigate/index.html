@@ -2,24 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Navigate Reports – Fall 2025</title>
+  <title>Navigate Appointment Forms – Fall 2025</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     :root {
-      --bg: #f4f5f7;
+      --bg: #f5f5f7;
       --card-bg: #ffffff;
-      --text: #222222;
-      --muted: #666666;
-      --accent: #2f6feb;
-      --border: #dde1ea;
-    }
-
-    body.dark {
-      --bg: #111827;
-      --card-bg: #111111;
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --border: #374151;
+      --border: #d4d4d8;
+      --border-soft: #e4e4e7;
+      --text: #111827;
+      --muted: #6b7280;
+      --accent: #2563eb;
     }
 
     * {
@@ -38,131 +31,114 @@
     .page {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 1.75rem 1.25rem 3rem;
+      padding: 1.5rem 1rem 3rem;
     }
 
     header {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 1rem;
-      align-items: center;
       margin-bottom: 1.5rem;
     }
 
     header h1 {
-      margin: 0;
+      margin: 0 0 0.25rem;
       font-size: 1.8rem;
     }
 
     header p {
-      margin: 0.15rem 0 0;
+      margin: 0;
       color: var(--muted);
       font-size: 0.95rem;
     }
 
-    .controls {
-      display: flex;
-      gap: 0.75rem;
-      align-items: center;
-    }
-
-    .btn {
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: var(--card-bg);
-      padding: 0.4rem 0.9rem;
+    .hint {
+      margin-top: 0.75rem;
       font-size: 0.85rem;
-      cursor: pointer;
-      color: var(--text);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
+      color: var(--muted);
     }
 
-    .btn span {
-      font-size: 1rem;
-    }
-
-    .btn:hover {
-      border-color: var(--accent);
-    }
-
-    .card {
+    .form-card {
       background: var(--card-bg);
-      border-radius: 14px;
-      padding: 1.25rem 1.25rem 1.5rem;
+      border-radius: 16px;
       border: 1px solid var(--border);
-      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+      padding: 1.25rem 1.25rem 1.5rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
     }
 
-    .card-header {
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.75rem;
-      margin-bottom: 0.75rem;
+    .form-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.35rem 1rem;
+      border-bottom: 1px solid var(--border-soft);
+      padding-bottom: 0.4rem;
+      margin-bottom: 0.9rem;
     }
 
-    .card-header h2 {
-      margin: 0;
+    .form-title {
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    .meta-line {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .date-title {
       font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
     }
 
-    .card-header p {
-      margin: 0.25rem 0 0;
+    .subtitle {
       font-size: 0.9rem;
       color: var(--muted);
+      margin-bottom: 0.8rem;
     }
 
-    .hint {
-      font-size: 0.85rem;
-      color: var(--muted);
+    .grid-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
       margin-bottom: 0.75rem;
     }
 
-    .reports-wrapper {
-      max-height: 70vh;
+    .field {
+      border: 1px solid var(--border-soft);
       border-radius: 10px;
-      border: 1px solid var(--border);
-      background:
-        radial-gradient(circle at top left, #eef2ff 0, transparent 55%),
-        radial-gradient(circle at bottom right, #fef9c3 0, transparent 55%),
-        var(--card-bg);
-      padding: 0.75rem;
-      overflow: auto;
-      font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas,
-        "Liberation Mono", "Courier New", monospace;
-      font-size: 0.86rem;
+      padding: 0.55rem 0.7rem 0.7rem;
+      background: #fafafa;
+    }
+
+    .field-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      color: #374151;
+    }
+
+    .field-value {
+      font-size: 0.85rem;
       white-space: pre-wrap;
     }
 
-    .reports-wrapper::-webkit-scrollbar {
-      width: 10px;
+    .field-big {
+      border-radius: 10px;
+      border: 1px solid var(--border-soft);
+      padding: 0.55rem 0.7rem 0.9rem;
+      background: #fafafa;
+      margin-top: 0.2rem;
     }
 
-    .reports-wrapper::-webkit-scrollbar-track {
-      background: transparent;
+    .divider {
+      height: 1px;
+      background: var(--border-soft);
+      margin: 0.75rem 0 0.6rem;
     }
 
-    .reports-wrapper::-webkit-scrollbar-thumb {
-      background: rgba(15, 23, 42, 0.2);
-      border-radius: 999px;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      font-size: 0.8rem;
-      background: rgba(37, 99, 235, 0.08);
-      color: var(--accent);
-      border-radius: 999px;
-      padding: 0.2rem 0.6rem;
-      margin-top: 0.35rem;
-    }
-
-    @media (max-width: 640px) {
-      .reports-wrapper {
-        max-height: 65vh;
+    @media (max-width: 768px) {
+      .grid-row {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -170,1255 +146,2601 @@
 <body>
   <div class="page">
     <header>
-      <div>
-        <h1>Navigate Reports – Fall 2025</h1>
-        <p>Quick reference for your 50 Navigate appointment write-ups.</p>
-        <div class="badge">
-          <span>💡</span>
-          <span>Use Ctrl+F / Cmd+F to jump to “Navigate Report 23” or a student ID.</span>
-        </div>
-      </div>
-      <div class="controls">
-        <button class="btn" id="toggleThemeBtn" type="button">
-          <span>🌙</span><span>Toggle Dark Mode</span>
-        </button>
-      </div>
+      <h1>Navigate Appointment Forms – Fall 2025</h1>
+      <p>Each Navigate report formatted like your summary form: Assignments, Objectives, Study Skills, Goals, and Appointment Summary.</p>
+      <p class="hint">Tip: Use Ctrl+F / Cmd+F to search by “Navigate Report 14” or a student ID.</p>
     </header>
 
-    <main>
-      <div class="card">
-        <div class="card-header">
-          <h2>All Navigate Appointment Summaries</h2>
-          <p>Formatted using: Assignments Discussed, Objectives, Tutoring Skills Used, Appointment Summary.</p>
+    <!-- FORM CARDS START -->
+
+    <!-- 1 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 1 — Student ID: 2226221</div>
+        <div class="meta-line">Date &amp; Time: October 13, 2025 — 2:00 PM to 3:00 PM</div>
+        <div class="meta-line">Course: BIOL 1406 • Topic: Phospholipid and Bilayer</div>
+      </div>
+
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
+
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Section covering phospholipid structure and the formation of the bilayer.
+          </div>
         </div>
-        <p class="hint">
-          Scroll in this panel and copy any section directly into Navigate.
-        </p>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to identify the parts of a phospholipid and explain how hydrophobic and hydrophilic interactions form the bilayer.
+          </div>
+        </div>
+      </div>
 
-        <div class="reports-wrapper" id="reportsBox">
-Navigate Report 1
-Student ID: 2226221
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Continue reinforcing membrane structure and begin connecting phospholipids to membrane transport concepts.
+          </div>
+        </div>
+      </div>
 
-Date & Time: October 13, 2025 — 2:00 PM to 3:00 PM
-Course: BIOL 1406
-Topic: Phospholipid and Bilayer
-
-Assignments Discussed:
-• Section covering phospholipid structure and the formation of the bilayer
-
-Objectives of the Session:
-• Tutee will be able to identify the parts of a phospholipid and explain how hydrophobic and hydrophilic interactions form the bilayer.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help understanding phospholipids and how they form the bilayer.
 Tutor noticed that the tutee needed clarification on hydrophobic and hydrophilic interactions.
 Tutor used a mini lesson and guided diagrams to explain how phospholipids arrange themselves in water.
 Tutee asked questions and was able to explain bilayer formation with more accuracy by the end of the session.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 2 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 2 — Student ID: 2226221</div>
+        <div class="meta-line">Date &amp; Time: October 13, 2025 — 4:00 PM to 5:00 PM</div>
+        <div class="meta-line">Course: BIOL 1406 • Topic: Cell Membrane, Diffusion, Active &amp; Passive Transport</div>
+      </div>
 
-Navigate Report 2
-Student ID: 2226221
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Date & Time: October 13, 2025 — 4:00 PM to 5:00 PM
-Course: BIOL 1406
-Topic: Cell Membrane, Diffusion, Active and Passive Transport
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Section on membrane structure, diffusion, and active vs. passive transport.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to describe the structure of the cell membrane and differentiate between diffusion, osmosis, active transport, and passive transport.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Section on membrane structure, diffusion, and active vs. passive transport
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Review transport examples with concentration gradients and connect to real lab or homework questions.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to describe the structure of the cell membrane and differentiate between diffusion, osmosis, active transport, and passive transport.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help understanding cell membrane structure and transport mechanisms.
 Tutor noticed that the tutee needed additional clarification on the differences between active and passive transport.
 Tutor used a mini lesson and guided examples to reinforce key concepts.
 During the session, the student made comments regarding the tutor’s gender and appearance; tutor redirected the conversation back to course content. Tutee participated in the academic review but required multiple redirections to stay focused.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 3 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 3 — Student ID: 2226221</div>
+        <div class="meta-line">Date &amp; Time: October 20, 2025 — 4:00 PM to 4:30 PM</div>
+        <div class="meta-line">Course: BIOL 1406 • Topic: Intro to Biochemistry, Oxidation and Reduction</div>
+      </div>
 
-Navigate Report 3
-Student ID: 2226221
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Date & Time: October 20, 2025 — 4:00 PM to 4:30 PM
-Course: BIOL 1406
-Topic: Intro to Biochemistry, Oxidation and Reduction
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Biochemistry section covering redox reactions and basic chemistry concepts.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to identify oxidation and reduction and apply basic chemistry concepts required for BIOL 1406.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Biochemistry section covering redox reactions and basic chemistry concepts
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">R, M, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Check understanding of redox in metabolism (cellular respiration) and continue building chemistry foundations.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to identify oxidation and reduction and apply basic chemistry concepts required for BIOL 1406.
-
-Tutoring Skills Used:
-• R, M, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help with understanding oxidation and reduction for BIOL 1406.
 Tutor noticed that the tutee needed foundational chemistry review to understand the topic.
 Tutor used a mini lesson and directed the tutee to professor-recommended instructional videos to build the needed background knowledge.
 Tutee asked for the tutor to explain the entire external video lesson; tutor clarified tutoring limitations, encouraged note-taking, and offered to answer specific questions after the tutee reviewed the material.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 4 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 4 — Student ID: 2226221</div>
+        <div class="meta-line">Date &amp; Time: October 27, 2025 — 2:00 PM to 2:30 PM</div>
+        <div class="meta-line">Course: BIOL 1406 • Topic: Respiration and Fermentation</div>
+      </div>
 
-Navigate Report 4
-Student ID: 2226221
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Date & Time: October 27, 2025 — 2:00 PM to 2:30 PM
-Course: BIOL 1406
-Topic: Respiration and Fermentation
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Overview of respiration and fermentation pathways.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to explain the basic steps of cellular respiration and fermentation.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Overview of respiration and fermentation pathways
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Revisit fermentation and connect it to glycolysis and overall ATP yield; practice exam-style questions.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to explain the basic steps of cellular respiration and fermentation.
-
-Tutoring Skills Used:
-• M, G
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help understanding respiration and fermentation.
 Tutor noticed that the tutee needed clarification on the purpose of fermentation and how it relates to respiration.
 Tutor used diagrams and guided explanations to support learning.
 During the session, the student made comments about the tutor’s appearance; tutor redirected the conversation back to course material. The student required repeated redirection and did not fully grasp all concepts by the end due to difficulty maintaining focus.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 5 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 5 — Student ID: 2226221</div>
+        <div class="meta-line">Date &amp; Time: October 27, 2025 — 3:30 PM to 4:00 PM</div>
+        <div class="meta-line">Course: BIOL 1406 • Topic: Mitochondria Diagram — Inner/Outer Membrane and Intermembrane Space</div>
+      </div>
 
-Navigate Report 5
-Student ID: 2226221
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Date & Time: October 27, 2025 — 3:30 PM to 4:00 PM
-Course: BIOL 1406
-Topic: Mitochondria Diagram — Inner/Outer Membrane and Intermembrane Space
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Worksheet on drawing and labeling mitochondrial structure.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to label mitochondrial structures and explain their functions in cellular respiration.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Worksheet on drawing and labeling mitochondrial structure
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">G, F, M</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Connect mitochondrial structure to each step of cellular respiration for deeper understanding.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to label mitochondrial structures and explain their functions in cellular respiration.
-
-Tutoring Skills Used:
-• G, F, M
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help labeling mitochondrial structures.
 Tutor noticed that the tutee needed a visual reference and step-by-step guidance.
 Tutor used guided practice by providing a blank diagram for the student to label.
 Tutee completed the diagram with support and demonstrated improved understanding of the membrane structures.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 6 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 6 — Student ID: 2226221</div>
+        <div class="meta-line">Date &amp; Time: November 3, 2025 — 3:00 PM to 3:30 PM</div>
+        <div class="meta-line">Course: BIOL 1406 • Topic: Glycolysis and Pyruvate Oxidation</div>
+      </div>
 
-Navigate Report 6
-Student ID: 2226221
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Date & Time: November 3, 2025 — 3:00 PM to 3:30 PM
-Course: BIOL 1406
-Topic: Glycolysis and Pyruvate Oxidation
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Glycolysis and pyruvate oxidation section of cellular respiration.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to summarize the steps of glycolysis and describe the role of pyruvate oxidation.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Glycolysis and pyruvate oxidation section of cellular respiration
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Review energy investment/payoff and link glycolysis and pyruvate oxidation to the Krebs cycle.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to summarize the steps of glycolysis and describe the role of pyruvate oxidation.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help understanding glycolysis and pyruvate oxidation.
 Tutor noticed that the tutee needed clarification on energy investment and payoff phases.
 Tutor used a mini lesson and guided examples to illustrate each step.
 Tutee responded well and was able to explain the processes with support.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 7 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 7 — Student ID: 2226221</div>
+        <div class="meta-line">Date &amp; Time: November 3, 2025 — 5:00 PM to 6:00 PM</div>
+        <div class="meta-line">Course: BIOL 1406 • Topic: Krebs Cycle and Electron Transport Chain</div>
+      </div>
 
-Navigate Report 7
-Student ID: 2226221
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Date & Time: November 3, 2025 — 5:00 PM to 6:00 PM
-Course: BIOL 1406
-Topic: Krebs Cycle and Electron Transport Chain
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Cellular respiration pathways focusing on Krebs cycle and ETC.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to identify key steps of the Krebs cycle and describe how the ETC generates ATP.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Cellular respiration pathways focusing on Krebs cycle and ETC
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Practice tracing electrons from NADH/FADH₂ through the ETC and relate to ATP yield.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to identify key steps of the Krebs cycle and describe how the ETC generates ATP.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help reviewing the Krebs cycle and electron transport chain.
 Tutor noticed that the tutee needed clarification on electron carriers and ATP production.
 Tutor used guided diagrams and structured review questions.
 Tutee showed improved understanding and asked clarifying questions throughout the session.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 8 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 8 — Student ID: 2226221</div>
+        <div class="meta-line">Date &amp; Time: November 10, 2025 — 3:00 PM to 3:30 PM</div>
+        <div class="meta-line">Course: BIOL 1406 • Topic: Introduction to Photosynthesis</div>
+      </div>
 
-Navigate Report 8
-Student ID: 2226221
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Date & Time: November 10, 2025 — 3:00 PM to 3:30 PM
-Course: BIOL 1406
-Topic: Introduction to Photosynthesis
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Overview section on photosynthesis and its purpose in plants.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to summarize what photosynthesis is and identify where it occurs in the cell.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Overview section on photosynthesis and its purpose in plants
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Move from the overview into light-dependent reactions and chloroplast structure.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to summarize what photosynthesis is and identify where it occurs in the cell.
-
-Tutoring Skills Used:
-• M, G
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help understanding the overall concept of photosynthesis.
 Tutor noticed that the tutee needed help distinguishing between chloroplast structure and function.
 Tutor used a mini lesson and guided explanations to clarify the process.
 Tutee asked questions and demonstrated improved understanding of photosynthesis basics.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 9 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 9 — Student ID: 2226221</div>
+        <div class="meta-line">Date &amp; Time: November 10, 2025 — 5:00 PM to 5:30 PM</div>
+        <div class="meta-line">Course: BIOL 1406 • Topic: Light-Dependent and Light-Independent Reactions</div>
+      </div>
 
-Navigate Report 9
-Student ID: 2226221
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Date & Time: November 10, 2025 — 5:00 PM to 5:30 PM
-Course: BIOL 1406
-Topic: Light-Dependent and Light-Independent Reactions
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Section covering the two main stages of photosynthesis.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to differentiate between light-dependent and light-independent reactions and explain their products.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Section covering the two main stages of photosynthesis
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Practice comparing inputs/outputs of both stages and linking them to respiration.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to differentiate between light-dependent and light-independent reactions and explain their products.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help learning the steps of photosynthesis reactions.
 Tutor noticed that the tutee needed clarification on ATP, NADPH, and carbon fixation.
 Tutor used diagrams and guided notes to break down each stage.
 Tutee showed better understanding after completing comparison exercises.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 10 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 10 — Student ID: 2226221</div>
+        <div class="meta-line">Date &amp; Time: November 17, 2025 — 6:45 PM to 7:15 PM</div>
+        <div class="meta-line">Course: BIOL 1406 • Topic: Krebs Cycle and Electron Transport Chain (Review)</div>
+      </div>
 
-Navigate Report 10
-Student ID: 2226221
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Date & Time: November 17, 2025 — 6:45 PM to 7:15 PM
-Course: BIOL 1406
-Topic: Krebs Cycle and Electron Transport Chain (Review)
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Review worksheet on Krebs cycle and ETC.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to explain the movement of electrons and the production of ATP in the ETC.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Review worksheet on Krebs cycle and ETC
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Check retention of ETC steps and transition into exam-style mixed questions on respiration.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to explain the movement of electrons and the production of ATP in the ETC.
-
-Tutoring Skills Used:
-• M, G
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help reviewing the ETC and Krebs cycle again.
 Tutor noticed that the tutee still had difficulty understanding electron carriers.
 Tutor used guided diagrams and repeated explanations to reinforce concepts.
 Tutee participated and asked follow-up questions for clarification.
+        </div>
+      </div>
+    </section>
+    <!-- 11 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 11 — Student ID: 2226221</div>
+        <div class="meta-line">Date &amp; Time: November 19, 2025 — 2:00 PM to 2:30 PM</div>
+        <div class="meta-line">Course: BIOL 1406 • Topic: Cell Membrane, Cell Organelles</div>
+      </div>
 
-⸻
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Navigate Report 11
-Student ID: 2226221
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Review of organelle functions and membrane structure.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to identify major organelles and describe their functions.
+          </div>
+        </div>
+      </div>
 
-Date & Time: November 19, 2025 — 2:00 PM to 2:30 PM
-Course: BIOL 1406
-Topic: Cell Membrane, Cell Organelles
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Strengthen recall of organelle functions and connect them to cell processes like transport and energy production.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Review of organelle functions and membrane structure
-
-Objectives of the Session:
-• Tutee will be able to identify major organelles and describe their functions.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help reviewing the cell membrane and organelles.
 Tutor noticed that the tutee mixed up organelle names and functions.
 Tutor used diagrams and guided practice questions to reinforce learning.
 Tutee improved accuracy and completed review questions with support.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 12 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 12 — Student ID: 2226221</div>
+        <div class="meta-line">Date &amp; Time: December 1, 2025 — 4:30 PM to 5:00 PM</div>
+        <div class="meta-line">Course: BIOL 1406 • Topic: Mitosis — Prophase, Metaphase, Anaphase, Telophase, Cytokinesis</div>
+      </div>
 
-Navigate Report 12
-Student ID: 2226221
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Date & Time: December 1, 2025 — 4:30 PM to 5:00 PM
-Course: BIOL 1406
-Topic: Mitosis — Prophase, Metaphase, Anaphase, Telophase, Cytokinesis
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Section on mitosis stages and cell division.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to identify each stage of mitosis and describe major events in order.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Section on mitosis stages and cell division
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Review checkpoint questions on mitosis and begin comparing mitosis to meiosis.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to identify each stage of mitosis and describe major events in order.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help learning the phases of mitosis.
 Tutor noticed that the tutee needed help distinguishing between metaphase and anaphase.
 Tutor used diagrams and guided labeling activities.
 Tutee was able to correctly identify stages after practice.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 13 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 13 — Student ID: 2226221</div>
+        <div class="meta-line">Date &amp; Time: December 8, 2025 — 4:35 PM to 5:05 PM</div>
+        <div class="meta-line">Course: BIOL 1406 • Topic: Inheritance and DNA Replication</div>
+      </div>
 
-Navigate Report 13
-Student ID: 2226221
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Date & Time: December 8, 2025 — 4:35 PM to 5:05 PM
-Course: BIOL 1406
-Topic: Inheritance and DNA Replication
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Review notes on basic inheritance patterns and DNA replication steps.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to explain DNA replication and identify inheritance patterns on a study guide.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Review notes on basic inheritance patterns and DNA replication steps
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, R, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Check understanding of DNA replication steps and practice applying inheritance patterns to Punnett square questions.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to explain DNA replication and identify inheritance patterns on a study guide.
-
-Tutoring Skills Used:
-• M, R, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help reviewing DNA replication and inheritance.
 Tutor noticed that the tutee needed structured guidance for studying and requested the tutor to complete learning tasks outside tutoring scope.
 Tutor used a mini lesson and directed the tutee to resources and a study guide created for independent review.
 During the session, the student questioned the tutor’s professional work and made comments about the tutor’s computer use telling that he was playing games while he was on Excel and Word making her a study guide. Tutor redirected the conversation and reinforced tutoring boundaries while assisting the student with the academic content.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 14 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 14 — Student ID: 2226221</div>
+        <div class="meta-line">Date &amp; Time: December 9, 2025 — 5:30 PM to 6:30 PM</div>
+        <div class="meta-line">Course: BIOL 1406 • Topic: Study Guide Review — Cellular Respiration and Photosynthesis</div>
+      </div>
 
-Navigate Report 14
-Student ID: 2226221
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Date & Time: December 9, 2025 — 5:30 PM to 6:30 PM
-Course: BIOL 1406
-Topic: Study Guide Review — Cellular Respiration and Photosynthesis
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Study guide created by the tutor for the student’s use during review.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to use the provided study materials to review lecture videos and complete guided questions.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Study guide created by the tutor for the student’s use during review
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">Q, R, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Encourage independent completion of the study guide and clarify any remaining content questions, if applicable.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to use the provided study materials to review lecture videos and complete guided questions.
-
-Tutoring Skills Used:
-• Q, R, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help reviewing the study guide and video resources.
 Tutor noticed that the tutee had not completed the preparation materials and had difficulty locating required class videos.
 Tutor used open-ended questions and directed the tutee to course resources to promote independent learning.
 Student expressed frustration when the tutor reinforced tutoring boundaries. Tutor maintained professionalism and attempted to end the session on schedule, but the tutee requested additional time, which impacted wait times for other students.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 15 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 15 — Student ID: 3389796 (Gabriella)</div>
+        <div class="meta-line">Course: CHEM 1411</div>
+        <div class="meta-line">Date &amp; Time: September 15, 2025 — 3:45 PM to 4:15 PM</div>
+        <div class="meta-line">Topic: Conversion and Dimensional Analysis</div>
+      </div>
 
-Navigate Report 15
-Student ID: 3389796 (Gabriella)
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: CHEM 1411
-Date & Time: September 15, 2025 — 3:45 PM to 4:15 PM
-Topic: Conversion and Dimensional Analysis
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Worksheet section on metric conversions and dimensional analysis.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to convert units using dimensional analysis and correctly set up conversion factors.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Worksheet section on metric conversions and dimensional analysis
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Apply dimensional analysis to more complex, multi-step word problems.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to convert units using dimensional analysis and correctly set up conversion factors.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help setting up dimensional analysis problems.
 Tutor noticed that the tutee needed help identifying which units should cancel out.
 Tutor used a mini lesson and guided examples to demonstrate the process.
 Tutee responded well and completed several practice problems accurately.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 16 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 16 — Student ID: 3389796 (Gabriella)</div>
+        <div class="meta-line">Course: CHEM 1411</div>
+        <div class="meta-line">Date &amp; Time: October 29, 2025 — 12:00 PM to 1:00 PM</div>
+        <div class="meta-line">Topic: Sigma and Pi Bonds, Percent Composition, Finding the Molecular Equation</div>
+      </div>
 
-Navigate Report 16
-Student ID: 3389796 (Gabriella)
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: CHEM 1411
-Date & Time: October 29, 2025 — 12:00 PM to 1:00 PM
-Topic: Sigma and Pi Bonds, Percent Composition, Finding the Molecular Equation
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Chemistry bonding section: sigma/pi bonds, percent composition, and molecular formula calculations.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to identify sigma and pi bonds and calculate percent composition and molecular formulas.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Chemistry bonding section: sigma/pi bonds, percent composition, and molecular formula calculations
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Practice molecular formula problems and review additional bonding examples to reinforce concepts.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to identify sigma and pi bonds and calculate percent composition and molecular formulas.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help understanding sigma and pi bonds as well as molecular composition problems.
 Tutor noticed that the tutee needed clarification on structural diagrams and percent composition equations.
 Tutor used guided practice and step-by-step examples to support comprehension.
 Tutee improved with practice and asked follow-up questions to confirm understanding.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 17 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 17 — Student ID: 3841720</div>
+        <div class="meta-line">Course: BIOL 1406</div>
+        <div class="meta-line">Date &amp; Time: September 17, 2025 — 1:15 PM to 1:45 PM</div>
+        <div class="meta-line">Topic: Dilution and Concentration (V1C1 = V2C2)</div>
+      </div>
 
-Navigate Report 17
-Student ID: 3841720
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: BIOL 1406
-Date & Time: September 17, 2025 — 1:15 PM to 1:45 PM
-Topic: Dilution and Concentration (V1C1 = V2C2)
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Lab worksheet using dilution equation V1C1 = V2C2.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to apply the dilution formula to calculate concentration or volume.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Lab worksheet using dilution equation V1C1 = V2C2
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Reinforce dilution problems with additional practice, including word problems that mix concepts.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to apply the dilution formula to calculate concentration or volume.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help solving dilution problems.
 Tutor noticed that the tutee needed help identifying which variable to solve for in the formula.
 Tutor used guided examples and visual setups to reinforce the equation.
 Tutee responded well and completed the practice problems with improved accuracy.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 18 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 18 — Student ID: 3726303</div>
+        <div class="meta-line">Course: BIOL 1406</div>
+        <div class="meta-line">Date &amp; Time: September 17, 2025 — 2:00 PM to 2:30 PM</div>
+        <div class="meta-line">Topic: Chemistry in Biology — Protons, Neutrons, Electrons, Ionic, Covalent, Polar Bonds</div>
+      </div>
 
-Navigate Report 18
-Student ID: 3726303
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: BIOL 1406
-Date & Time: September 17, 2025 — 2:00 PM to 2:30 PM
-Topic: Chemistry in Biology — Protons, Neutrons, Electrons, Ionic, Covalent, Polar Bonds
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Section on atomic structure and types of chemical bonds.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to identify subatomic particles and distinguish between ionic, covalent, and polar covalent bonds.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Section on atomic structure and types of chemical bonds
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Apply bonding concepts to real biological molecules and continue reviewing chemistry foundations.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to identify subatomic particles and distinguish between ionic, covalent, and polar covalent bonds.
-
-Tutoring Skills Used:
-• M, G
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help understanding basic chemistry needed for biology.
 Tutor noticed that the tutee mixed up electron sharing and electron transfer.
 Tutor used diagrams and guided explanations to clarify bonding types.
 Tutee showed improved understanding and asked relevant questions.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 19 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 19 — Student ID: 3726303</div>
+        <div class="meta-line">Course: BIOL 1406</div>
+        <div class="meta-line">Date &amp; Time: September 17, 2025 — 2:30 PM to 3:00 PM</div>
+        <div class="meta-line">Topic: Macromolecules — Proteins, Lipids, Nucleic Acids, Carbohydrates</div>
+      </div>
 
-Navigate Report 19
-Student ID: 3726303
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: BIOL 1406
-Date & Time: September 17, 2025 — 2:30 PM to 3:00 PM
-Topic: Macromolecules — Proteins, Lipids, Nucleic Acids, Carbohydrates
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Review worksheet on macromolecules and functions.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to identify each macromolecule and match it to its correct structure and function.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Review worksheet on macromolecules and functions
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Review additional practice questions on macromolecules and connect them to metabolism and cell structure.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to identify each macromolecule and match it to its correct structure and function.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help identifying macromolecules.
 Tutor noticed that the tutee confused protein and lipid functions.
 Tutor used guided comparison charts and explanations.
 Tutee showed improvement and matched molecules more accurately during review.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 20 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 20 — Student ID: 3776669 (Sakchhi Gautam)</div>
+        <div class="meta-line">Course: CHEM 1411</div>
+        <div class="meta-line">Date &amp; Time: September 20, 2025</div>
+        <div class="meta-line">Topic: States of Matter, Electron Configuration, Significant Figures</div>
+      </div>
 
-Navigate Report 20
-Student ID: 3776669 (Sakchhi Gautam)
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: CHEM 1411
-Date & Time: September 20, 2025
-Topic: States of Matter, Electron Configuration, Significant Figures
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Chemistry review worksheet: states of matter, electron configuration, sig figs.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to write correct electron configurations and apply sig fig rules in calculations.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Chemistry review worksheet: states of matter, electron configuration, sig figs
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Revisit electron configuration and apply sig fig rules to more complex multi-step problems.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to write correct electron configurations and apply sig fig rules in calculations.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help with electron configuration and sig figs.
 Tutor noticed that the tutee needed help identifying orbitals and rounding rules.
 Tutor used guided examples and mini lessons to reinforce the steps.
 Tutee improved accuracy after practicing several problems.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 21 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 21 — Student ID: 3776669 (Sakchhi Gautam)</div>
+        <div class="meta-line">Course: CHEM 1411</div>
+        <div class="meta-line">Date &amp; Time: September 24, 2025</div>
+        <div class="meta-line">Topic: Periodic Trends, Nomenclature, Cations and Anions</div>
+      </div>
 
-Navigate Report 21
-Student ID: 3776669 (Sakchhi Gautam)
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: CHEM 1411
-Date & Time: September 24, 2025
-Topic: Periodic Trends, Nomenclature, Cations and Anions
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Section on naming ionic compounds and understanding periodic trends.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to identify periodic trends and properly name ionic compounds.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Section on naming ionic compounds and understanding periodic trends
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, Q</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Continue practicing nomenclature and integrate periodic trends into predicting ion charges.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to identify periodic trends and properly name ionic compounds.
-
-Tutoring Skills Used:
-• M, G, Q
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help naming compounds and reviewing periodic table patterns.
 Tutor noticed that the tutee confused cation and anion charges.
 Tutor used mini lessons and guided practice questions.
 Tutee demonstrated better understanding after practice.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 22 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 22 — Student ID: 3776669 (Sakchhi Gautam)</div>
+        <div class="meta-line">Course: CHEM 1411</div>
+        <div class="meta-line">Date &amp; Time: October 18, 2025 — 9:30 AM to 12:00 PM</div>
+        <div class="meta-line">Topic: Naming Acids, Naming Compounds, Mol-to-Mol Conversions, Rule of Thumb, Empirical Formula</div>
+      </div>
 
-Navigate Report 22
-Student ID: 3776669 (Sakchhi Gautam)
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: CHEM 1411
-Date & Time: October 18, 2025 — 9:30 AM to 12:00 PM
-Topic: Naming Acids, Naming Compounds, Mol-to-Mol Conversions, Rule of Thumb, Empirical Formula
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Chemistry assignment sections on acid nomenclature, compound naming, stoichiometry (mol-to-mol conversions), and empirical formula problems.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to name acids and compounds correctly and solve stoichiometry and empirical formula problems using structured steps.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Chemistry assignment sections on acid nomenclature, compound naming, stoichiometry (mol-to-mol conversions), and empirical formula problems
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F, Q</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Review additional stoichiometry problems and confirm mastery of empirical formula calculations.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to name acids and compounds correctly and solve stoichiometry and empirical formula problems using structured steps.
-
-Tutoring Skills Used:
-• M, G, F, Q
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help reviewing naming rules and solving stoichiometric conversions.
 Tutor noticed that the tutee needed additional support applying systematic naming rules and setting up mol ratios.
 Tutor used mini lessons, guided practice, and question prompts to reinforce foundational concepts and step-by-step procedures.
 Tutee demonstrated progress and became more confident identifying naming patterns and mole relationships during practice.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 23 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 23 — Student ID: 3776669 (Sakchhi Gautam)</div>
+        <div class="meta-line">Course: CHEM 1411</div>
+        <div class="meta-line">Date &amp; Time: October 18, 2025 — 1:30 PM to 2:00 PM</div>
+        <div class="meta-line">Topic: Drawing Lewis Structures, Octet Rule, Resonance</div>
+      </div>
 
-Navigate Report 23
-Student ID: 3776669 (Sakchhi Gautam)
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: CHEM 1411
-Date & Time: October 18, 2025 — 1:30 PM to 2:00 PM
-Topic: Drawing Lewis Structures, Octet Rule, Resonance
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Worksheet on Lewis structures, bonding patterns, and resonance forms.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to draw basic Lewis structures, apply the octet rule, and recognize resonance structures when applicable.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Worksheet on Lewis structures, bonding patterns, and resonance forms
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Practice additional Lewis structure examples, including polyatomic ions and resonance cases.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to draw basic Lewis structures, apply the octet rule, and recognize resonance structures when applicable.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help drawing Lewis structures and understanding resonance.
 Tutor noticed that the tutee needed guidance locating central atoms and assigning lone pairs.
 Tutor used a mini lesson and guided drawing practice to model structure-building.
 Tutee improved with repetition and was able to complete examples with support.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 24 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 24 — Student ID: 3776669 (Sakchhi Gautam)</div>
+        <div class="meta-line">Course: CHEM 1411</div>
+        <div class="meta-line">Date &amp; Time: October 22, 2025 — 12:45 PM to 1:45 PM</div>
+        <div class="meta-line">Topic: Exam Review — Naming Formulas, Mole Conversions, Avogadro’s Number</div>
+      </div>
 
-Navigate Report 24
-Student ID: 3776669 (Sakchhi Gautam)
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: CHEM 1411
-Date & Time: October 22, 2025 — 12:45 PM to 1:45 PM
-Topic: Exam Review — Naming Formulas, Mole Conversions, Avogadro’s Number
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Exam review packet covering basic conversions, formula naming, and counting particles.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to solve mole-to-grams conversions, name chemical formulas, and apply Avogadro’s number in calculations.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Exam review packet covering basic conversions, formula naming, and counting particles
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F, Q</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Address any remaining exam questions and reinforce problem types the tutee still finds challenging.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to solve mole-to-grams conversions, name chemical formulas, and apply Avogadro’s number in calculations.
-
-Tutoring Skills Used:
-• M, G, F, Q
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help preparing for an upcoming exam.
 Tutor noticed that the tutee needed help connecting formulas to the steps required in mole calculations.
 Tutor used guided practice and targeted review questions to reinforce accuracy.
 Tutee showed significant improvement and responded well to structured exam preparation.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 25 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 25 — Student ID: 3776669 (Sakchhi Gautam)</div>
+        <div class="meta-line">Course: CHEM 1411</div>
+        <div class="meta-line">Date &amp; Time: October 27, 2025 — 11:00 AM to 12:30 PM</div>
+        <div class="meta-line">Topic: Solubility, Net Ionic Equations, Complete Ionic Equations, Balancing Reactions</div>
+      </div>
 
-Navigate Report 25
-Student ID: 3776669 (Sakchhi Gautam)
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: CHEM 1411
-Date & Time: October 27, 2025 — 11:00 AM to 12:30 PM
-Topic: Solubility, Net Ionic Equations, Complete Ionic Equations, Balancing Reactions
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Worksheet on reaction types, ionic equations, and solubility rules.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to write complete and net ionic equations and identify soluble and insoluble compounds using solubility rules.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Worksheet on reaction types, ionic equations, and solubility rules
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Practice additional ionic equation problems and confirm comfort with identifying spectator ions.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to write complete and net ionic equations and identify soluble and insoluble compounds using solubility rules.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help writing ionic equations and applying solubility rules.
 Tutor noticed that the tutee needed help identifying spectator ions and balancing reactions.
 Tutor used a mini lesson and guided examples to walk through each step of the process.
 Tutee improved accuracy and was able to apply solubility rules more consistently during practice.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 26 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 26 — Student ID: 3703821</div>
+        <div class="meta-line">Course: CHEM 1406</div>
+        <div class="meta-line">Date &amp; Time: September 22, 2025 — 11:45 AM to 12:15 PM</div>
+        <div class="meta-line">Topic: Naming Compounds, Chemical Nomenclature</div>
+      </div>
 
-Navigate Report 26
-Student ID: 3703821
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: CHEM 1406
-Date & Time: September 22, 2025 — 11:45 AM to 12:15 PM
-Topic: Naming Compounds, Chemical Nomenclature
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Worksheet on naming ionic and covalent compounds.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to apply nomenclature rules to correctly name chemical compounds.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Worksheet on naming ionic and covalent compounds
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Review additional naming problems and confirm distinction between ionic and covalent naming patterns.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to apply nomenclature rules to correctly name chemical compounds.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help naming compounds and understanding chemical nomenclature rules.
 Tutor noticed that the tutee needed clarification on distinguishing ionic and covalent bonding patterns.
 Tutor used a mini lesson and guided examples to demonstrate naming steps.
 Tutee improved accuracy and completed several naming exercises successfully.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 27 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 27 — Student ID: 3703821</div>
+        <div class="meta-line">Course: CHEM 1406</div>
+        <div class="meta-line">Date &amp; Time: September 22, 2025 — 12:30 PM to 1:00 PM</div>
+        <div class="meta-line">Topic: Ionic Compounds with Polyatomic Ions; Naming Practice</div>
+      </div>
 
-Navigate Report 27
-Student ID: 3703821
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: CHEM 1406
-Date & Time: September 22, 2025 — 12:30 PM to 1:00 PM
-Topic: Ionic Compounds with Polyatomic Ions; Naming Practice
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Worksheet section on naming polyatomic compounds.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to correctly name ionic compounds containing polyatomic ions.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Worksheet section on naming polyatomic compounds
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Continue naming practice with mixed sets of compounds to reinforce familiarity with common polyatomic ions.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to correctly name ionic compounds containing polyatomic ions.
-
-Tutoring Skills Used:
-• G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help naming compounds with polyatomic ions.
 Tutor noticed that the tutee needed help identifying charges and formula patterns.
 Tutor used guided practice and feedback to reinforce naming conventions.
 Tutee improved steadily and was able to name additional compounds with minimal assistance.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 28 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 28 — Student ID: 5041826</div>
+        <div class="meta-line">Course: BIOL 1406</div>
+        <div class="meta-line">Date &amp; Time: September 22, 2025 — 4:30 PM to 5:00 PM</div>
+        <div class="meta-line">Topic: Introduction to Organelles; Lab Report Outline; Microsoft Word &amp; Screenshot Tools</div>
+      </div>
 
-Navigate Report 28
-Student ID: 5041826
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: BIOL 1406
-Date & Time: September 22, 2025 — 4:30 PM to 5:00 PM
-Topic: Introduction to Organelles; Lab Report Outline; Microsoft Word & Screenshot Tools
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Lab report outline and introduction to organelles; how to use Command + Shift + 4 to screenshot on Mac.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to identify major organelles and properly outline a lab report using Word tools.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Lab report outline and introduction to organelles
-• How to use Command + Shift + 4 to screenshot on Mac
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, R, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Review the drafted lab report and check understanding of organelle functions if needed.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to identify major organelles and properly outline a lab report using Word tools.
-
-Tutoring Skills Used:
-• M, R, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help understanding organelles and formatting a lab report.
 Tutor noticed that the tutee needed guidance navigating Word and locating screenshot functions.
 Tutor used a mini lesson and directed the tutee to step-by-step resources.
 Tutee followed instructions successfully and practiced formatting skills.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 29 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 29 — Student ID: 3389796</div>
+        <div class="meta-line">Course: CHEM 1411</div>
+        <div class="meta-line">Date &amp; Time: September 24, 2025 — 12:30 PM to 1:00 PM</div>
+        <div class="meta-line">Topic: Planck’s Constant, Speed of Light, Frequency, Wavelength</div>
+      </div>
 
-Navigate Report 29
-Student ID: 3389796
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: CHEM 1411
-Date & Time: September 24, 2025 — 12:30 PM to 1:00 PM
-Topic: Planck’s Constant, Speed of Light, Frequency, Wavelength
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Worksheet on c = λν and E = hν calculations.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to calculate frequency, wavelength, and energy using light equations.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Worksheet on c = λν and E = hν calculations
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Practice more photon problems and connect calculations to the electromagnetic spectrum.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to calculate frequency, wavelength, and energy using light equations.
-
-Tutoring Skills Used:
-• M, G
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help applying photon and wavelength equations.
 Tutor noticed that the tutee mixed up inverse relationships between wavelength and frequency.
 Tutor used guided formulas and numerical examples to reinforce understanding.
 Tutee showed improved accuracy and solved practice problems with more confidence.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 30 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 30 — Student ID: 3657203</div>
+        <div class="meta-line">Course: CHEM 1412</div>
+        <div class="meta-line">Date &amp; Time: September 29, 2024 — 11:15 AM to 12:15 PM</div>
+        <div class="meta-line">Topic: Rate Law, First and Second Order, Arrhenius Equation</div>
+      </div>
 
-Navigate Report 30
-Student ID: 3657203
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: CHEM 1412
-Date & Time: September 29, 2024 — 11:15 AM to 12:15 PM
-Topic: Rate Law, First and Second Order, Arrhenius Equation
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Chapter section on reaction kinetics, rate laws, and Arrhenius calculations.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to identify reaction order and apply integrated rate laws and the Arrhenius equation.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Chapter section on reaction kinetics, rate laws, and Arrhenius calculations
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Work additional kinetics problems and confirm comfort with interpreting rate constants and units.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to identify reaction order and apply integrated rate laws and the Arrhenius equation.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help understanding rate laws and reaction order.
 Tutor noticed that the tutee struggled identifying units and constants in equations.
 Tutor used a mini lesson and guided examples to build comprehension.
 Tutee demonstrated improved ability to apply the correct formulas to kinetics problems.
+        </div>
+      </div>
+    </section>
 
-⸻
+      <!-- 31 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 31 — Student ID: 3657203</div>
+        <div class="meta-line">Course: CHEM 1412</div>
+        <div class="meta-line">Date &amp; Time: September 29, 2024 — 12:15 PM to 12:45 PM</div>
+        <div class="meta-line">Topic: Catalysts and Intermediates; Half-Life for First and Second Order Reactions</div>
+      </div>
 
-Navigate Report 31
-Student ID: 3657203
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: CHEM 1412
-Date & Time: September 29, 2024 — 12:15 PM to 12:45 PM
-Topic: Catalysts and Intermediates; Half-Life for First and Second Order Reactions
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Worksheet on reaction mechanisms and half-life equations.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to identify catalysts and intermediates and solve half-life problems using correct equations.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Worksheet on reaction mechanisms and half-life equations
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Practice more half-life problems and review examples of reaction mechanisms involving catalysts and intermediates.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to identify catalysts and intermediates and solve half-life problems using correct equations.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help with catalysts and reaction half-life calculations.
 Tutor noticed that the tutee needed help recognizing which step a catalyst participates in.
 Tutor used diagrams and guided practice to reinforce concepts.
 Tutee responded well and was able to complete half-life calculations independently.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 32 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 32 — Student ID: 3272245 (Bella)</div>
+        <div class="meta-line">Course: BIOL 1406</div>
+        <div class="meta-line">Date &amp; Time: October 6, 2025 — 11:15 AM to 11:45 AM</div>
+        <div class="meta-line">Topic: Cell Organelles and Structures; Levels of Organization; Cell Theory</div>
+      </div>
 
-Navigate Report 32
-Student ID: 3272245 (Bella)
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: BIOL 1406
-Date & Time: October 6, 2025 — 11:15 AM to 11:45 AM
-Topic: Cell Organelles and Structures; Levels of Organization; Cell Theory
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Worksheet and notes on cell organelles, structure levels, and types of cell theory.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to identify cell organelles and describe different levels of biological organization and forms of cell theory.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Worksheet and notes on cell organelles, structure levels, and types of cell theory
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Connect organelle structure and function to broader topics like metabolism and cell division.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to identify cell organelles and describe different levels of biological organization and forms of cell theory.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help understanding organelles and biological organization.
 Tutor noticed the tutee needed help distinguishing between prokaryotic and eukaryotic features.
 Tutor used diagrams and guided questioning to clarify concepts.
 Tutee actively engaged and demonstrated improved recall by the end.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 33 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 33 — Student ID: 3272245 (Bella)</div>
+        <div class="meta-line">Course: BIOL 1406</div>
+        <div class="meta-line">Date &amp; Time: October 13, 2025 — 3:00 PM to 4:00 PM</div>
+        <div class="meta-line">Topic: Lipids, Phospholipids, Tonicity, Osmosis, Diffusion</div>
+      </div>
 
-Navigate Report 33
-Student ID: 3272245 (Bella)
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: BIOL 1406
-Date & Time: October 13, 2025 — 3:00 PM to 4:00 PM
-Topic: Lipids, Phospholipids, Tonicity, Osmosis, Diffusion
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Sections covering membrane lipids, phospholipid bilayer, and membrane transport.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to explain the structure of phospholipids, describe tonicity, and differentiate between osmosis, diffusion, and active transport.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Sections covering membrane lipids, phospholipid bilayer, and membrane transport
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Review tonicity scenarios (hypotonic, hypertonic, isotonic) and practice predicting water movement.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to explain the structure of phospholipids, describe tonicity, and differentiate between osmosis, diffusion, and active transport.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help understanding phospholipids and membrane transport.
 Tutor noticed that the tutee needed clarification on how tonicity affects water movement in cells.
 Tutor used mini lessons, diagrams, and guided examples to explain transport processes.
 Tutee showed improved understanding and asked questions reflecting deeper engagement.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 34 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 34 — Student ID: 3272245 (Bella)</div>
+        <div class="meta-line">Course: BIOL 1406</div>
+        <div class="meta-line">Date &amp; Time: October 25, 2025 — 12:30 PM to 1:30 PM</div>
+        <div class="meta-line">Topic: Cellular Respiration; Cell Membrane; Mitochondria; Glycolysis; Pyruvate Oxidation; Krebs Cycle; Electron Transport Chain</div>
+      </div>
 
-Navigate Report 34
-Student ID: 3272245 (Bella)
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: BIOL 1406
-Date & Time: October 25, 2025 — 12:30 PM to 1:30 PM
-Topic: Cellular Respiration; Cell Membrane; Mitochondria; Glycolysis; Pyruvate Oxidation; Krebs Cycle; Electron Transport Chain
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Chapter review on all stages of cellular respiration and mitochondrial structure.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to summarize each stage of cellular respiration and identify major components of the mitochondrion.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Chapter review on all stages of cellular respiration and mitochondrial structure
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F, Q</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Reinforce connections between mitochondrial structure and ATP production and review redox concepts as needed.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to summarize each stage of cellular respiration and identify major components of the mitochondrion.
-
-Tutoring Skills Used:
-• M, G, F, Q
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help reviewing all stages of cellular respiration.
 Tutor noticed that the tutee needed support connecting mitochondrial structure to each stage of ATP production.
 Tutor used diagrams, guided questions, and structured review to reinforce sequencing.
 Tutee participated actively and demonstrated improved understanding of energy pathways.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 35 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 35 — Student ID: 3272245 (Bella)</div>
+        <div class="meta-line">Course: BIOL 1406</div>
+        <div class="meta-line">Date &amp; Time: October 27, 2025 — 12:45 PM to 2:45 PM</div>
+        <div class="meta-line">Topic: Photosynthesis; Chloroplast Structure; Light-Dependent and Light-Independent Reactions</div>
+      </div>
 
-Navigate Report 35
-Student ID: 3272245 (Bella)
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: BIOL 1406
-Date & Time: October 27, 2025 — 12:45 PM to 2:45 PM
-Topic: Photosynthesis; Chloroplast Structure; Light-Dependent and Light-Independent Reactions
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Chapter section on chloroplast anatomy and stages of photosynthesis.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to describe chloroplast structure and distinguish between the light reactions and the Calvin cycle.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Chapter section on chloroplast anatomy and stages of photosynthesis
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Compare photosynthesis and respiration and practice summarizing inputs/outputs of each stage.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to describe chloroplast structure and distinguish between the light reactions and the Calvin cycle.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help understanding the stages of photosynthesis.
 Tutor noticed that the tutee needed help organizing the steps of the light-dependent reactions and the Calvin cycle.
 Tutor used diagrams, guided note-taking, and structured examples to reinforce each step.
 Tutee showed strong engagement and improved accuracy when summarizing both stages of photosynthesis.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 36 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 36 — Student ID: 3737023</div>
+        <div class="meta-line">Course: BIOL 1408</div>
+        <div class="meta-line">Date &amp; Time: October 6, 2025 — 1:15 PM to 1:45 PM</div>
+        <div class="meta-line">Topic: Metabolism, Cellular Respiration, Calvin Cycle, Lipids and Bilayer Membrane</div>
+      </div>
 
-Navigate Report 36
-Student ID: 3737023
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: BIOL 1408
-Date & Time: October 6, 2025 — 1:15 PM to 1:45 PM
-Topic: Metabolism, Cellular Respiration, Calvin Cycle, Lipids and Bilayer Membrane
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Review notes on metabolism, respiration, and photosynthesis.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to explain how metabolism relates to respiration and photosynthesis and describe lipid bilayer structure.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Review notes on metabolism, respiration, and photosynthesis
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Continue reviewing energy pathways and check understanding of how membranes support these processes.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to explain how metabolism relates to respiration and photosynthesis and describe lipid bilayer structure.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help connecting metabolism to energy pathways.
 Tutor noticed that the tutee needed assistance organizing the steps of respiration and the Calvin cycle.
 Tutor used guided review and diagrams to build conceptual connections.
 Tutee responded positively and demonstrated better understanding during practice questions.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 37 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 37 — Student ID: 3754443</div>
+        <div class="meta-line">Course: BIOL 1408</div>
+        <div class="meta-line">Date &amp; Time: October 8, 2025 — 10:15 AM to 10:45 AM</div>
+        <div class="meta-line">Topic: Photosynthesis and Cellular Respiration</div>
+      </div>
 
-Navigate Report 37
-Student ID: 3754443
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: BIOL 1408
-Date & Time: October 8, 2025 — 10:15 AM to 10:45 AM
-Topic: Photosynthesis and Cellular Respiration
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Section comparing photosynthesis and respiration pathways.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to compare inputs and outputs of both processes and explain how they are complementary.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Section comparing photosynthesis and respiration pathways
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Practice completing comparison charts and reinforcing key differences and similarities between the two pathways.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to compare inputs and outputs of both processes and explain how they are complementary.
-
-Tutoring Skills Used:
-• M, G
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help understanding the relationship between photosynthesis and respiration.
 Tutor noticed that the tutee mixed up the products of each process.
 Tutor used comparison charts and guided explanation to reinforce key differences.
 Tutee improved understanding and completed summary questions accurately.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 38 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 38 — Student ID: 5000683</div>
+        <div class="meta-line">Course: BIOL 1406</div>
+        <div class="meta-line">Date &amp; Time: October 8, 2025 — 1:15 PM to 1:30 PM</div>
+        <div class="meta-line">Topic: Respiration and Metabolism (Anabolic, Catabolic, Aerobic, Anaerobic)</div>
+      </div>
 
-Navigate Report 38
-Student ID: 5000683
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: BIOL 1406
-Date & Time: October 8, 2025 — 1:15 PM to 1:30 PM
-Topic: Respiration and Metabolism (Anabolic, Catabolic, Aerobic, Anaerobic)
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Notes covering metabolic pathways and respiration types.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to distinguish anabolic vs catabolic reactions and aerobic vs anaerobic respiration.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Notes covering metabolic pathways and respiration types
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Apply these definitions to real cellular examples and review where each process occurs in the cell.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to distinguish anabolic vs catabolic reactions and aerobic vs anaerobic respiration.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help reviewing metabolic processes.
 Tutor noticed that the tutee needed help relating definitions to biological examples.
 Tutor used mini explanations and guided examples.
 Tutee was able to summarize each term with improved clarity.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 39 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 39 — Student ID: 3607433</div>
+        <div class="meta-line">Course: BIOL 1406</div>
+        <div class="meta-line">Date &amp; Time: October 8, 2025 — 1:30 PM to 2:00 PM</div>
+        <div class="meta-line">Topic: Diffusion, Osmosis, Active and Passive Transport</div>
+      </div>
 
-Navigate Report 39
-Student ID: 3607433
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: BIOL 1406
-Date & Time: October 8, 2025 — 1:30 PM to 2:00 PM
-Topic: Diffusion, Osmosis, Active and Passive Transport
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Worksheet on membrane transport mechanisms.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to differentiate diffusion, osmosis, active transport, and passive transport.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Worksheet on membrane transport mechanisms
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Practice additional scenarios involving transport across membranes and review energy requirements.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to differentiate diffusion, osmosis, active transport, and passive transport.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help reviewing membrane transport.
 Tutor noticed that the tutee misunderstood the differences between passive and active movement.
 Tutor used diagrams and guided examples to clarify definitions.
 Tutee demonstrated improved accuracy when explaining each transport type.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 40 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 40 — Student ID: 3726303</div>
+        <div class="meta-line">Course: BIOL 1406</div>
+        <div class="meta-line">Date &amp; Time: October 13, 2025 — 3:00 PM to 4:00 PM</div>
+        <div class="meta-line">Topic: Cell Membrane, Diffusion, Active and Passive Transport</div>
+      </div>
 
-Navigate Report 40
-Student ID: 3726303
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: BIOL 1406
-Date & Time: October 13, 2025 — 3:00 PM to 4:00 PM
-Topic: Cell Membrane, Diffusion, Active and Passive Transport
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Section on membrane structure and movement of molecules across the membrane.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to describe the components of the cell membrane and differentiate between diffusion, osmosis, active transport, and passive transport.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Section on membrane structure and movement of molecules across the membrane
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Revisit transport examples and connect them to concentration gradients and energy usage.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to describe the components of the cell membrane and differentiate between diffusion, osmosis, active transport, and passive transport.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help reviewing membrane structure and transport mechanisms.
 Tutor noticed that the tutee needed clarification on energy requirements for passive vs active transport.
 Tutor used diagrams and guided explanations to reinforce each transport process.
 Tutee clarified misunderstandings and demonstrated improved accuracy when answering review questions.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 41 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 41 — Student ID: 3272245 (Bella)</div>
+        <div class="meta-line">Course: BIOL 1406</div>
+        <div class="meta-line">Date &amp; Time: October 18, 2025 — 1:00 PM to 2:30 PM</div>
+        <div class="meta-line">Topic: Cellular Respiration; Redox Reactions; Labeling the Mitochondria; Glycolysis; NAD⁺/NADH Electron Carriers</div>
+      </div>
 
-Navigate Report 41
-Student ID: 3272245 (Bella)
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: BIOL 1406
-Date & Time: October 18, 2025 — 1:00 PM to 2:30 PM
-Topic: Cellular Respiration; Redox Reactions; Labeling the Mitochondria (Intermembrane Space, Inner Membrane, Outer Membrane, Matrix); Glycolysis; NAD⁺/NADH Electron Carriers
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Chapter section on cellular respiration steps; diagram labeling for mitochondrial structure; redox reactions and electron carriers.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to label key mitochondrial structures and explain how glycolysis, pyruvate oxidation, the Krebs cycle, and electron transport chain contribute to ATP production. Tutee will be able to identify oxidation and reduction in metabolic pathways and describe the role of NAD⁺/NADH as electron carriers.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Chapter section on cellular respiration steps
-• Diagram labeling for mitochondrial structure
-• Redox reactions and electron carriers
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F, Q</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Check retention of mitochondrial labels and continue reinforcing redox and electron carrier concepts.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to label key mitochondrial structures and explain how glycolysis, pyruvate oxidation, the Krebs cycle, and electron transport chain contribute to ATP production.
-• Tutee will be able to identify oxidation and reduction in metabolic pathways and describe the role of NAD⁺/NADH as electron carriers.
-
-Tutoring Skills Used:
-• M, G, F, Q
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help understanding the full pathway of cellular respiration.
 Tutor noticed that the tutee needed clarification on how the structure of the mitochondria relates to where each stage occurs.
 Tutor used diagrams, guided questions, and step-by-step explanations of redox reactions and electron carriers to reinforce connections.
 Tutee engaged actively, completed labeling activities accurately, and demonstrated clearer understanding of how ATP is generated in each stage.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 42 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 42 — Student ID: 3726453</div>
+        <div class="meta-line">Course: BIOL 1406</div>
+        <div class="meta-line">Date &amp; Time: September 22, 2025</div>
+        <div class="meta-line">Topic: Scientific Observations</div>
+      </div>
 
-Navigate Report 42
-Student ID: 3726453
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: BIOL 1406
-Date & Time: September 22, 2025
-Topic: Scientific Observations
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Section covering scientific observations and basic principles of scientific inquiry.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to distinguish between qualitative and quantitative observations and apply observation skills to biological scenarios.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Section covering scientific observations and basic principles of scientific inquiry
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Apply observation vs inference skills to lab examples and practice interpreting data descriptions.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to distinguish between qualitative and quantitative observations and apply observation skills to biological scenarios.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help understanding what constitutes a scientific observation.
 Tutor noticed that the tutee needed clarification distinguishing observation from inference.
 Tutor used examples and guided practice to reinforce accurate identification of each type.
 Tutee became more confident and correctly applied observation skills to sample questions.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 43 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 43 — Student ID: 3824250</div>
+        <div class="meta-line">Course: BIOL 1406</div>
+        <div class="meta-line">Date &amp; Time: (Date not provided)</div>
+        <div class="meta-line">Topic: Lab Report Writing; Forming a Hypothesis; Using Excel for Graphing; Understanding a Rubric and Outline</div>
+      </div>
 
-Navigate Report 43
-Student ID: 3824250
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: BIOL 1406
-Date & Time: (Date not provided — can be added if needed)
-Topic: Lab Report Writing; Forming a Hypothesis; Using Excel for Graphing; Understanding a Rubric and Outline
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Lab report assignment; how to form a testable hypothesis; how to use Excel to create graphs; how to read and outline a rubric.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to write a clear, testable hypothesis, create graphs in Excel, and organize a lab report using the rubric as a guide.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Lab report assignment
-• How to form a testable hypothesis
-• How to use Excel to create graphs
-• How to read and outline a rubric
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, R, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Review the tutee’s drafted lab sections and confirm that the rubric criteria are being met.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to write a clear, testable hypothesis, create graphs in Excel, and organize a lab report using the rubric as a guide.
-
-Tutoring Skills Used:
-• M, R, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help understanding how to structure a lab report and create graphs.
 Tutor noticed that the tutee needed help interpreting the rubric and connecting it to the required sections of the report.
 Tutor used mini lessons, directed the tutee to Excel tools, and guided them through an outline process.
 Tutee responded well and was able to draft a clearer structure for the lab report.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 44 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 44 — Student ID: 3632524</div>
+        <div class="meta-line">Course: CHEM 1411</div>
+        <div class="meta-line">Date &amp; Time: November 3, 2025 — 4:15 PM to 4:45 PM</div>
+        <div class="meta-line">Topic: Lewis Structures; Electron Geometry; Molecular Geometry</div>
+      </div>
 
-Navigate Report 44
-Student ID: 3632524
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: CHEM 1411
-Date & Time: November 3, 2025 — 4:15 PM to 4:45 PM
-Topic: Lewis Structures; Electron Geometry; Molecular Geometry
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Worksheet on Lewis structures; applying VSEPR theory to determine electron and molecular geometry.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to draw Lewis structures and determine both electron geometry and molecular geometry using VSEPR rules.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Worksheet on Lewis structures
-• Applying VSEPR theory to determine electron and molecular geometry
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Continue practicing shape predictions and relate geometry to polarity where appropriate.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to draw Lewis structures and determine both electron geometry and molecular geometry using VSEPR rules.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help drawing Lewis structures and identifying molecular shapes.
 Tutor noticed that the tutee needed help placing lone pairs correctly and determining central atoms.
 Tutor used a mini lesson and guided examples to reinforce each step of the VSEPR process.
 Tutee gained confidence and was able to determine geometry for several practice molecules.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 45 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 45 — Student ID: 3731760</div>
+        <div class="meta-line">Course: BIOL 1406</div>
+        <div class="meta-line">Date &amp; Time: 11:15 AM – 3:00 PM</div>
+        <div class="meta-line">Topic: Cellular Respiration and Photosynthesis (Light-Dependent &amp; Light-Independent Reactions)</div>
+      </div>
 
-Navigate Report 45
-Student ID: 3731760
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: BIOL 1406
-Date & Time: (Duration: 11:15 AM – 3:00 PM)
-Topic: Cellular Respiration and Photosynthesis (Light-Dependent and Light-Independent Reactions)
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Full chapter review on cellular respiration; light-dependent reactions and Calvin cycle; comparison between respiration and photosynthesis.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to describe each stage of cellular respiration and summarize the steps of photosynthesis, including reactants, products, and locations.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Full chapter review on cellular respiration
-• Light-dependent reactions and Calvin cycle
-• Comparison between respiration and photosynthesis
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F, Q</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Re-check tricky sections (ETC and Calvin cycle) and do final exam-style questions if needed.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to describe each stage of cellular respiration and summarize the steps of photosynthesis, including reactants, products, and locations.
-
-Tutoring Skills Used:
-• M, G, F, Q
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help reviewing cellular respiration and photosynthesis in preparation for an exam.
 Tutor noticed that the tutee needed help organizing steps and understanding energy flow between pathways.
 Tutor used diagrams, guided questions, and structured review to connect each stage.
 Tutee engaged well and demonstrated more accurate recall of both processes.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 46 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 46 — Student IDs: 3817720 &amp; 3625842</div>
+        <div class="meta-line">Course: BIOL 1406</div>
+        <div class="meta-line">Date &amp; Time: 11:15 AM – 3:00 PM</div>
+        <div class="meta-line">Topic: Cellular Respiration and Photosynthesis (Light-Dependent &amp; Independent)</div>
+      </div>
 
-Navigate Report 46
-Student IDs: 3817720 & 3625842
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: BIOL 1406
-Date & Time: 11:15 AM – 3:00 PM
-Topic: Cellular Respiration and Photosynthesis (Light-Dependent and Independent)
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Overview of cellular respiration; light reactions and Calvin cycle; interrelationship of the two processes.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutees will be able to explain inputs/outputs of respiration and photosynthesis and link steps to ATP production.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Overview of cellular respiration
-• Light reactions and Calvin cycle
-• Interrelationship of the two processes
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F, Q</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Have each tutee independently walk through each pathway and answer practice exam questions.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutees will be able to explain inputs/outputs of respiration and photosynthesis and link steps to ATP production.
-
-Tutoring Skills Used:
-• M, G, F, Q
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutees wanted help reviewing major energy pathways.
 Tutor noticed that both students needed help distinguishing between the electron transport chain and Calvin cycle.
 Tutor used illustrations and guided explanations to reinforce differences and similarities.
 Tutees improved their ability to walk through each process and answered review questions accurately.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 47 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 47 — Student IDs: 3817720 &amp; 2129839</div>
+        <div class="meta-line">Course: BIOL 1406</div>
+        <div class="meta-line">Date &amp; Time: December 1, 2025 — 11:15 AM to 11:45 AM</div>
+        <div class="meta-line">Topic: Mitosis vs Meiosis</div>
+      </div>
 
-Navigate Report 47
-Student ID: 3817720 + 2129839
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: BIOL 1406
-Date & Time: December 1, 2025 — 11:15 AM to 11:45 AM
-Topic: Mitosis vs Meiosis
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Comparison charts for mitosis and meiosis; steps of each phase (prophase, metaphase, anaphase, telophase).
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutees will be able to differentiate mitosis and meiosis and identify what is being separated in each division.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Comparison charts for mitosis and meiosis
-• Steps of each phase (prophase, metaphase, anaphase, telophase)
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Practice additional comparison questions and ensure both students can explain each process verbally.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutees will be able to differentiate mitosis and meiosis and identify what is being separated in each division.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutees wanted help understanding the differences between mitosis and meiosis.
 Tutor noticed that the tutees needed help identifying when homologous chromosomes vs sister chromatids separate.
 Tutor used side-by-side diagrams and guided examples to reinforce distinctions.
 Tutees showed improved clarity and were able to summarize each process.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 48 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 48 — Student ID: 3625842</div>
+        <div class="meta-line">Course: BIOL 1406</div>
+        <div class="meta-line">Date &amp; Time: December 1, 2025 — 12:00 PM to 12:30 PM</div>
+        <div class="meta-line">Topic: Punnett Squares (Monohybrid &amp; Dihybrid Crosses)</div>
+      </div>
 
-Navigate Report 48
-Student ID: 3625842
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: BIOL 1406
-Date & Time: December 1, 2025 — 12:00 PM to 12:30 PM
-Topic: Punnett Squares (Monohybrid & Dihybrid Crosses)
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Genetics worksheet on monohybrid and dihybrid Punnett squares.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to set up and solve monohybrid and dihybrid crosses and interpret genotypic and phenotypic ratios.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Genetics worksheet on monohybrid and dihybrid Punnett squares
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Continue practicing dihybrid crosses and review word problems involving inheritance patterns.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to set up and solve monohybrid and dihybrid crosses and interpret genotypic and phenotypic ratios.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help reviewing Punnett squares.
 Tutor noticed that the tutee needed help distributing alleles correctly in a dihybrid cross.
 Tutor used guided practice and step-by-step modeling to reinforce the setup.
 Tutee improved accuracy and completed multiple crosses with greater confidence.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 49 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 49 — Student ID: 5030174</div>
+        <div class="meta-line">Course: ARTS 1316</div>
+        <div class="meta-line">Date &amp; Time: December 8, 2025 — 11:00 AM to 12:00 PM</div>
+        <div class="meta-line">Topic: Submitting Art Assignments on Brightspace; Using Genius Scan</div>
+      </div>
 
-Navigate Report 49
-Student ID: 5030174
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: ARTS 1316
-Date & Time: December 8, 2025 — 11:00 AM to 12:00 PM
-Topic: Submitting Art Assignments on Brightspace; Using Genius Scan
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Uploading files to Brightspace; scanning artwork with Genius Scan.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to scan, format, and submit artwork correctly on Brightspace.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Uploading files to Brightspace
-• Scanning artwork with Genius Scan
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, R, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+Confirm the tutee can independently scan and upload future assignments without assistance.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to scan, format, and submit artwork correctly on Brightspace.
-
-Tutoring Skills Used:
-• M, R, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help submitting art assignments online.
 Tutor noticed that the tutee needed help navigating upload settings and formatting scanned images.
 Tutor used step-by-step guidance and resources to walk through the submission process.
 Tutee successfully scanned and uploaded examples and demonstrated how to repeat the process.
+        </div>
+      </div>
+    </section>
 
-⸻
+    <!-- 50 -->
+    <section class="form-card">
+      <div class="form-header">
+        <div class="form-title">Navigate Report 50 — Student ID: 3783298</div>
+        <div class="meta-line">Course: BIOL 1408</div>
+        <div class="meta-line">Date &amp; Time: December 8, 2025 — 12:00 PM to 1:00 PM</div>
+        <div class="meta-line">Topic: DNA Replication; Cellular Respiration; Photosynthesis; Cell Structure</div>
+      </div>
 
-Navigate Report 50
-Student ID: 3783298
+      <div class="date-title">Date &amp; Time</div>
+      <div class="subtitle">Summary Details For</div>
 
-Course: BIOL 1408
-Date & Time: December 8, 2025 — 12:00 PM to 1:00 PM
-Topic: DNA Replication; Cellular Respiration; Photosynthesis; Cell Structure
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Assignments Discussed</div>
+          <div class="field-value">
+Section review on DNA replication; overview of respiration and photosynthesis; organelles involved in metabolism.
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Objectives of the Session</div>
+          <div class="field-value">
+Tutee will be able to describe DNA replication steps and summarize major metabolic pathways and organelle functions.
+          </div>
+        </div>
+      </div>
 
-Assignments Discussed:
-• Section review on DNA replication
-• Overview of respiration and photosynthesis
-• Organelles involved in metabolism
+      <div class="grid-row">
+        <div class="field">
+          <div class="field-label">Study Skills Used</div>
+          <div class="field-value">M, G, F</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Goals for Next Session</div>
+          <div class="field-value">
+If needed, revisit any sections the tutee still finds confusing and complete additional cumulative review questions.
+          </div>
+        </div>
+      </div>
 
-Objectives of the Session:
-• Tutee will be able to describe DNA replication steps and summarize major metabolic pathways and organelle functions.
-
-Tutoring Skills Used:
-• M, G, F
-
-Appointment Summary:
+      <div class="divider"></div>
+      <div class="field-big">
+        <div class="field-label">Appointment Summary</div>
+        <div class="field-value">
 Tutee wanted help preparing for a cumulative exam.
 Tutor noticed that the tutee needed help connecting organelle structure with metabolic processes.
 Tutor used review diagrams and guided explanations to reinforce connections.
 Tutee asked relevant questions and demonstrated better recall of major pathways.
         </div>
       </div>
-    </main>
+    </section>
+    
+    <!-- FORM CARDS END -->
   </div>
 
-  <script>
-    const toggleBtn = document.getElementById('toggleThemeBtn');
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-    });
-  </script>
+  <!-- No JS is required for the layout itself -->
 </body>
 </html>
