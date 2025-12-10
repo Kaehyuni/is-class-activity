@@ -1,1 +1,1424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Navigate Reports – Fall 2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #f4f5f7;
+      --card-bg: #ffffff;
+      --text: #222222;
+      --muted: #666666;
+      --accent: #2f6feb;
+      --border: #dde1ea;
+    }
 
+    body.dark {
+      --bg: #111827;
+      --card-bg: #111111;
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border: #374151;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.75rem 1.25rem 3rem;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    header p {
+      margin: 0.15rem 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .controls {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .btn {
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      padding: 0.4rem 0.9rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn span {
+      font-size: 1rem;
+    }
+
+    .btn:hover {
+      border-color: var(--accent);
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 1.25rem 1.25rem 1.5rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    .card-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-header h2 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .card-header p {
+      margin: 0.25rem 0 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .hint {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .reports-wrapper {
+      max-height: 70vh;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background:
+        radial-gradient(circle at top left, #eef2ff 0, transparent 55%),
+        radial-gradient(circle at bottom right, #fef9c3 0, transparent 55%),
+        var(--card-bg);
+      padding: 0.75rem;
+      overflow: auto;
+      font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+      font-size: 0.86rem;
+      white-space: pre-wrap;
+    }
+
+    .reports-wrapper::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    .reports-wrapper::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .reports-wrapper::-webkit-scrollbar-thumb {
+      background: rgba(15, 23, 42, 0.2);
+      border-radius: 999px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.8rem;
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 0.2rem 0.6rem;
+      margin-top: 0.35rem;
+    }
+
+    @media (max-width: 640px) {
+      .reports-wrapper {
+        max-height: 65vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div>
+        <h1>Navigate Reports – Fall 2025</h1>
+        <p>Quick reference for your 50 Navigate appointment write-ups.</p>
+        <div class="badge">
+          <span>💡</span>
+          <span>Use Ctrl+F / Cmd+F to jump to “Navigate Report 23” or a student ID.</span>
+        </div>
+      </div>
+      <div class="controls">
+        <button class="btn" id="toggleThemeBtn" type="button">
+          <span>🌙</span><span>Toggle Dark Mode</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <div class="card">
+        <div class="card-header">
+          <h2>All Navigate Appointment Summaries</h2>
+          <p>Formatted using: Assignments Discussed, Objectives, Tutoring Skills Used, Appointment Summary.</p>
+        </div>
+        <p class="hint">
+          Scroll in this panel and copy any section directly into Navigate.
+        </p>
+
+        <div class="reports-wrapper" id="reportsBox">
+Navigate Report 1
+Student ID: 2226221
+
+Date & Time: October 13, 2025 — 2:00 PM to 3:00 PM
+Course: BIOL 1406
+Topic: Phospholipid and Bilayer
+
+Assignments Discussed:
+• Section covering phospholipid structure and the formation of the bilayer
+
+Objectives of the Session:
+• Tutee will be able to identify the parts of a phospholipid and explain how hydrophobic and hydrophilic interactions form the bilayer.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help understanding phospholipids and how they form the bilayer.
+Tutor noticed that the tutee needed clarification on hydrophobic and hydrophilic interactions.
+Tutor used a mini lesson and guided diagrams to explain how phospholipids arrange themselves in water.
+Tutee asked questions and was able to explain bilayer formation with more accuracy by the end of the session.
+
+⸻
+
+Navigate Report 2
+Student ID: 2226221
+
+Date & Time: October 13, 2025 — 4:00 PM to 5:00 PM
+Course: BIOL 1406
+Topic: Cell Membrane, Diffusion, Active and Passive Transport
+
+Assignments Discussed:
+• Section on membrane structure, diffusion, and active vs. passive transport
+
+Objectives of the Session:
+• Tutee will be able to describe the structure of the cell membrane and differentiate between diffusion, osmosis, active transport, and passive transport.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help understanding cell membrane structure and transport mechanisms.
+Tutor noticed that the tutee needed additional clarification on the differences between active and passive transport.
+Tutor used a mini lesson and guided examples to reinforce key concepts.
+During the session, the student made comments regarding the tutor’s gender and appearance; tutor redirected the conversation back to course content. Tutee participated in the academic review but required multiple redirections to stay focused.
+
+⸻
+
+Navigate Report 3
+Student ID: 2226221
+
+Date & Time: October 20, 2025 — 4:00 PM to 4:30 PM
+Course: BIOL 1406
+Topic: Intro to Biochemistry, Oxidation and Reduction
+
+Assignments Discussed:
+• Biochemistry section covering redox reactions and basic chemistry concepts
+
+Objectives of the Session:
+• Tutee will be able to identify oxidation and reduction and apply basic chemistry concepts required for BIOL 1406.
+
+Tutoring Skills Used:
+• R, M, F
+
+Appointment Summary:
+Tutee wanted help with understanding oxidation and reduction for BIOL 1406.
+Tutor noticed that the tutee needed foundational chemistry review to understand the topic.
+Tutor used a mini lesson and directed the tutee to professor-recommended instructional videos to build the needed background knowledge.
+Tutee asked for the tutor to explain the entire external video lesson; tutor clarified tutoring limitations, encouraged note-taking, and offered to answer specific questions after the tutee reviewed the material.
+
+⸻
+
+Navigate Report 4
+Student ID: 2226221
+
+Date & Time: October 27, 2025 — 2:00 PM to 2:30 PM
+Course: BIOL 1406
+Topic: Respiration and Fermentation
+
+Assignments Discussed:
+• Overview of respiration and fermentation pathways
+
+Objectives of the Session:
+• Tutee will be able to explain the basic steps of cellular respiration and fermentation.
+
+Tutoring Skills Used:
+• M, G
+
+Appointment Summary:
+Tutee wanted help understanding respiration and fermentation.
+Tutor noticed that the tutee needed clarification on the purpose of fermentation and how it relates to respiration.
+Tutor used diagrams and guided explanations to support learning.
+During the session, the student made comments about the tutor’s appearance; tutor redirected the conversation back to course material. The student required repeated redirection and did not fully grasp all concepts by the end due to difficulty maintaining focus.
+
+⸻
+
+Navigate Report 5
+Student ID: 2226221
+
+Date & Time: October 27, 2025 — 3:30 PM to 4:00 PM
+Course: BIOL 1406
+Topic: Mitochondria Diagram — Inner/Outer Membrane and Intermembrane Space
+
+Assignments Discussed:
+• Worksheet on drawing and labeling mitochondrial structure
+
+Objectives of the Session:
+• Tutee will be able to label mitochondrial structures and explain their functions in cellular respiration.
+
+Tutoring Skills Used:
+• G, F, M
+
+Appointment Summary:
+Tutee wanted help labeling mitochondrial structures.
+Tutor noticed that the tutee needed a visual reference and step-by-step guidance.
+Tutor used guided practice by providing a blank diagram for the student to label.
+Tutee completed the diagram with support and demonstrated improved understanding of the membrane structures.
+
+⸻
+
+Navigate Report 6
+Student ID: 2226221
+
+Date & Time: November 3, 2025 — 3:00 PM to 3:30 PM
+Course: BIOL 1406
+Topic: Glycolysis and Pyruvate Oxidation
+
+Assignments Discussed:
+• Glycolysis and pyruvate oxidation section of cellular respiration
+
+Objectives of the Session:
+• Tutee will be able to summarize the steps of glycolysis and describe the role of pyruvate oxidation.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help understanding glycolysis and pyruvate oxidation.
+Tutor noticed that the tutee needed clarification on energy investment and payoff phases.
+Tutor used a mini lesson and guided examples to illustrate each step.
+Tutee responded well and was able to explain the processes with support.
+
+⸻
+
+Navigate Report 7
+Student ID: 2226221
+
+Date & Time: November 3, 2025 — 5:00 PM to 6:00 PM
+Course: BIOL 1406
+Topic: Krebs Cycle and Electron Transport Chain
+
+Assignments Discussed:
+• Cellular respiration pathways focusing on Krebs cycle and ETC
+
+Objectives of the Session:
+• Tutee will be able to identify key steps of the Krebs cycle and describe how the ETC generates ATP.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help reviewing the Krebs cycle and electron transport chain.
+Tutor noticed that the tutee needed clarification on electron carriers and ATP production.
+Tutor used guided diagrams and structured review questions.
+Tutee showed improved understanding and asked clarifying questions throughout the session.
+
+⸻
+
+Navigate Report 8
+Student ID: 2226221
+
+Date & Time: November 10, 2025 — 3:00 PM to 3:30 PM
+Course: BIOL 1406
+Topic: Introduction to Photosynthesis
+
+Assignments Discussed:
+• Overview section on photosynthesis and its purpose in plants
+
+Objectives of the Session:
+• Tutee will be able to summarize what photosynthesis is and identify where it occurs in the cell.
+
+Tutoring Skills Used:
+• M, G
+
+Appointment Summary:
+Tutee wanted help understanding the overall concept of photosynthesis.
+Tutor noticed that the tutee needed help distinguishing between chloroplast structure and function.
+Tutor used a mini lesson and guided explanations to clarify the process.
+Tutee asked questions and demonstrated improved understanding of photosynthesis basics.
+
+⸻
+
+Navigate Report 9
+Student ID: 2226221
+
+Date & Time: November 10, 2025 — 5:00 PM to 5:30 PM
+Course: BIOL 1406
+Topic: Light-Dependent and Light-Independent Reactions
+
+Assignments Discussed:
+• Section covering the two main stages of photosynthesis
+
+Objectives of the Session:
+• Tutee will be able to differentiate between light-dependent and light-independent reactions and explain their products.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help learning the steps of photosynthesis reactions.
+Tutor noticed that the tutee needed clarification on ATP, NADPH, and carbon fixation.
+Tutor used diagrams and guided notes to break down each stage.
+Tutee showed better understanding after completing comparison exercises.
+
+⸻
+
+Navigate Report 10
+Student ID: 2226221
+
+Date & Time: November 17, 2025 — 6:45 PM to 7:15 PM
+Course: BIOL 1406
+Topic: Krebs Cycle and Electron Transport Chain (Review)
+
+Assignments Discussed:
+• Review worksheet on Krebs cycle and ETC
+
+Objectives of the Session:
+• Tutee will be able to explain the movement of electrons and the production of ATP in the ETC.
+
+Tutoring Skills Used:
+• M, G
+
+Appointment Summary:
+Tutee wanted help reviewing the ETC and Krebs cycle again.
+Tutor noticed that the tutee still had difficulty understanding electron carriers.
+Tutor used guided diagrams and repeated explanations to reinforce concepts.
+Tutee participated and asked follow-up questions for clarification.
+
+⸻
+
+Navigate Report 11
+Student ID: 2226221
+
+Date & Time: November 19, 2025 — 2:00 PM to 2:30 PM
+Course: BIOL 1406
+Topic: Cell Membrane, Cell Organelles
+
+Assignments Discussed:
+• Review of organelle functions and membrane structure
+
+Objectives of the Session:
+• Tutee will be able to identify major organelles and describe their functions.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help reviewing the cell membrane and organelles.
+Tutor noticed that the tutee mixed up organelle names and functions.
+Tutor used diagrams and guided practice questions to reinforce learning.
+Tutee improved accuracy and completed review questions with support.
+
+⸻
+
+Navigate Report 12
+Student ID: 2226221
+
+Date & Time: December 1, 2025 — 4:30 PM to 5:00 PM
+Course: BIOL 1406
+Topic: Mitosis — Prophase, Metaphase, Anaphase, Telophase, Cytokinesis
+
+Assignments Discussed:
+• Section on mitosis stages and cell division
+
+Objectives of the Session:
+• Tutee will be able to identify each stage of mitosis and describe major events in order.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help learning the phases of mitosis.
+Tutor noticed that the tutee needed help distinguishing between metaphase and anaphase.
+Tutor used diagrams and guided labeling activities.
+Tutee was able to correctly identify stages after practice.
+
+⸻
+
+Navigate Report 13
+Student ID: 2226221
+
+Date & Time: December 8, 2025 — 4:35 PM to 5:05 PM
+Course: BIOL 1406
+Topic: Inheritance and DNA Replication
+
+Assignments Discussed:
+• Review notes on basic inheritance patterns and DNA replication steps
+
+Objectives of the Session:
+• Tutee will be able to explain DNA replication and identify inheritance patterns on a study guide.
+
+Tutoring Skills Used:
+• M, R, F
+
+Appointment Summary:
+Tutee wanted help reviewing DNA replication and inheritance.
+Tutor noticed that the tutee needed structured guidance for studying and requested the tutor to complete learning tasks outside tutoring scope.
+Tutor used a mini lesson and directed the tutee to resources and a study guide created for independent review.
+During the session, the student questioned the tutor’s professional work and made comments about the tutor’s computer use telling that he was playing games while he was on Excel and Word making her a study guide. Tutor redirected the conversation and reinforced tutoring boundaries while assisting the student with the academic content.
+
+⸻
+
+Navigate Report 14
+Student ID: 2226221
+
+Date & Time: December 9, 2025 — 5:30 PM to 6:30 PM
+Course: BIOL 1406
+Topic: Study Guide Review — Cellular Respiration and Photosynthesis
+
+Assignments Discussed:
+• Study guide created by the tutor for the student’s use during review
+
+Objectives of the Session:
+• Tutee will be able to use the provided study materials to review lecture videos and complete guided questions.
+
+Tutoring Skills Used:
+• Q, R, F
+
+Appointment Summary:
+Tutee wanted help reviewing the study guide and video resources.
+Tutor noticed that the tutee had not completed the preparation materials and had difficulty locating required class videos.
+Tutor used open-ended questions and directed the tutee to course resources to promote independent learning.
+Student expressed frustration when the tutor reinforced tutoring boundaries. Tutor maintained professionalism and attempted to end the session on schedule, but the tutee requested additional time, which impacted wait times for other students.
+
+⸻
+
+Navigate Report 15
+Student ID: 3389796 (Gabriella)
+
+Course: CHEM 1411
+Date & Time: September 15, 2025 — 3:45 PM to 4:15 PM
+Topic: Conversion and Dimensional Analysis
+
+Assignments Discussed:
+• Worksheet section on metric conversions and dimensional analysis
+
+Objectives of the Session:
+• Tutee will be able to convert units using dimensional analysis and correctly set up conversion factors.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help setting up dimensional analysis problems.
+Tutor noticed that the tutee needed help identifying which units should cancel out.
+Tutor used a mini lesson and guided examples to demonstrate the process.
+Tutee responded well and completed several practice problems accurately.
+
+⸻
+
+Navigate Report 16
+Student ID: 3389796 (Gabriella)
+
+Course: CHEM 1411
+Date & Time: October 29, 2025 — 12:00 PM to 1:00 PM
+Topic: Sigma and Pi Bonds, Percent Composition, Finding the Molecular Equation
+
+Assignments Discussed:
+• Chemistry bonding section: sigma/pi bonds, percent composition, and molecular formula calculations
+
+Objectives of the Session:
+• Tutee will be able to identify sigma and pi bonds and calculate percent composition and molecular formulas.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help understanding sigma and pi bonds as well as molecular composition problems.
+Tutor noticed that the tutee needed clarification on structural diagrams and percent composition equations.
+Tutor used guided practice and step-by-step examples to support comprehension.
+Tutee improved with practice and asked follow-up questions to confirm understanding.
+
+⸻
+
+Navigate Report 17
+Student ID: 3841720
+
+Course: BIOL 1406
+Date & Time: September 17, 2025 — 1:15 PM to 1:45 PM
+Topic: Dilution and Concentration (V1C1 = V2C2)
+
+Assignments Discussed:
+• Lab worksheet using dilution equation V1C1 = V2C2
+
+Objectives of the Session:
+• Tutee will be able to apply the dilution formula to calculate concentration or volume.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help solving dilution problems.
+Tutor noticed that the tutee needed help identifying which variable to solve for in the formula.
+Tutor used guided examples and visual setups to reinforce the equation.
+Tutee responded well and completed the practice problems with improved accuracy.
+
+⸻
+
+Navigate Report 18
+Student ID: 3726303
+
+Course: BIOL 1406
+Date & Time: September 17, 2025 — 2:00 PM to 2:30 PM
+Topic: Chemistry in Biology — Protons, Neutrons, Electrons, Ionic, Covalent, Polar Bonds
+
+Assignments Discussed:
+• Section on atomic structure and types of chemical bonds
+
+Objectives of the Session:
+• Tutee will be able to identify subatomic particles and distinguish between ionic, covalent, and polar covalent bonds.
+
+Tutoring Skills Used:
+• M, G
+
+Appointment Summary:
+Tutee wanted help understanding basic chemistry needed for biology.
+Tutor noticed that the tutee mixed up electron sharing and electron transfer.
+Tutor used diagrams and guided explanations to clarify bonding types.
+Tutee showed improved understanding and asked relevant questions.
+
+⸻
+
+Navigate Report 19
+Student ID: 3726303
+
+Course: BIOL 1406
+Date & Time: September 17, 2025 — 2:30 PM to 3:00 PM
+Topic: Macromolecules — Proteins, Lipids, Nucleic Acids, Carbohydrates
+
+Assignments Discussed:
+• Review worksheet on macromolecules and functions
+
+Objectives of the Session:
+• Tutee will be able to identify each macromolecule and match it to its correct structure and function.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help identifying macromolecules.
+Tutor noticed that the tutee confused protein and lipid functions.
+Tutor used guided comparison charts and explanations.
+Tutee showed improvement and matched molecules more accurately during review.
+
+⸻
+
+Navigate Report 20
+Student ID: 3776669 (Sakchhi Gautam)
+
+Course: CHEM 1411
+Date & Time: September 20, 2025
+Topic: States of Matter, Electron Configuration, Significant Figures
+
+Assignments Discussed:
+• Chemistry review worksheet: states of matter, electron configuration, sig figs
+
+Objectives of the Session:
+• Tutee will be able to write correct electron configurations and apply sig fig rules in calculations.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help with electron configuration and sig figs.
+Tutor noticed that the tutee needed help identifying orbitals and rounding rules.
+Tutor used guided examples and mini lessons to reinforce the steps.
+Tutee improved accuracy after practicing several problems.
+
+⸻
+
+Navigate Report 21
+Student ID: 3776669 (Sakchhi Gautam)
+
+Course: CHEM 1411
+Date & Time: September 24, 2025
+Topic: Periodic Trends, Nomenclature, Cations and Anions
+
+Assignments Discussed:
+• Section on naming ionic compounds and understanding periodic trends
+
+Objectives of the Session:
+• Tutee will be able to identify periodic trends and properly name ionic compounds.
+
+Tutoring Skills Used:
+• M, G, Q
+
+Appointment Summary:
+Tutee wanted help naming compounds and reviewing periodic table patterns.
+Tutor noticed that the tutee confused cation and anion charges.
+Tutor used mini lessons and guided practice questions.
+Tutee demonstrated better understanding after practice.
+
+⸻
+
+Navigate Report 22
+Student ID: 3776669 (Sakchhi Gautam)
+
+Course: CHEM 1411
+Date & Time: October 18, 2025 — 9:30 AM to 12:00 PM
+Topic: Naming Acids, Naming Compounds, Mol-to-Mol Conversions, Rule of Thumb, Empirical Formula
+
+Assignments Discussed:
+• Chemistry assignment sections on acid nomenclature, compound naming, stoichiometry (mol-to-mol conversions), and empirical formula problems
+
+Objectives of the Session:
+• Tutee will be able to name acids and compounds correctly and solve stoichiometry and empirical formula problems using structured steps.
+
+Tutoring Skills Used:
+• M, G, F, Q
+
+Appointment Summary:
+Tutee wanted help reviewing naming rules and solving stoichiometric conversions.
+Tutor noticed that the tutee needed additional support applying systematic naming rules and setting up mol ratios.
+Tutor used mini lessons, guided practice, and question prompts to reinforce foundational concepts and step-by-step procedures.
+Tutee demonstrated progress and became more confident identifying naming patterns and mole relationships during practice.
+
+⸻
+
+Navigate Report 23
+Student ID: 3776669 (Sakchhi Gautam)
+
+Course: CHEM 1411
+Date & Time: October 18, 2025 — 1:30 PM to 2:00 PM
+Topic: Drawing Lewis Structures, Octet Rule, Resonance
+
+Assignments Discussed:
+• Worksheet on Lewis structures, bonding patterns, and resonance forms
+
+Objectives of the Session:
+• Tutee will be able to draw basic Lewis structures, apply the octet rule, and recognize resonance structures when applicable.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help drawing Lewis structures and understanding resonance.
+Tutor noticed that the tutee needed guidance locating central atoms and assigning lone pairs.
+Tutor used a mini lesson and guided drawing practice to model structure-building.
+Tutee improved with repetition and was able to complete examples with support.
+
+⸻
+
+Navigate Report 24
+Student ID: 3776669 (Sakchhi Gautam)
+
+Course: CHEM 1411
+Date & Time: October 22, 2025 — 12:45 PM to 1:45 PM
+Topic: Exam Review — Naming Formulas, Mole Conversions, Avogadro’s Number
+
+Assignments Discussed:
+• Exam review packet covering basic conversions, formula naming, and counting particles
+
+Objectives of the Session:
+• Tutee will be able to solve mole-to-grams conversions, name chemical formulas, and apply Avogadro’s number in calculations.
+
+Tutoring Skills Used:
+• M, G, F, Q
+
+Appointment Summary:
+Tutee wanted help preparing for an upcoming exam.
+Tutor noticed that the tutee needed help connecting formulas to the steps required in mole calculations.
+Tutor used guided practice and targeted review questions to reinforce accuracy.
+Tutee showed significant improvement and responded well to structured exam preparation.
+
+⸻
+
+Navigate Report 25
+Student ID: 3776669 (Sakchhi Gautam)
+
+Course: CHEM 1411
+Date & Time: October 27, 2025 — 11:00 AM to 12:30 PM
+Topic: Solubility, Net Ionic Equations, Complete Ionic Equations, Balancing Reactions
+
+Assignments Discussed:
+• Worksheet on reaction types, ionic equations, and solubility rules
+
+Objectives of the Session:
+• Tutee will be able to write complete and net ionic equations and identify soluble and insoluble compounds using solubility rules.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help writing ionic equations and applying solubility rules.
+Tutor noticed that the tutee needed help identifying spectator ions and balancing reactions.
+Tutor used a mini lesson and guided examples to walk through each step of the process.
+Tutee improved accuracy and was able to apply solubility rules more consistently during practice.
+
+⸻
+
+Navigate Report 26
+Student ID: 3703821
+
+Course: CHEM 1406
+Date & Time: September 22, 2025 — 11:45 AM to 12:15 PM
+Topic: Naming Compounds, Chemical Nomenclature
+
+Assignments Discussed:
+• Worksheet on naming ionic and covalent compounds
+
+Objectives of the Session:
+• Tutee will be able to apply nomenclature rules to correctly name chemical compounds.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help naming compounds and understanding chemical nomenclature rules.
+Tutor noticed that the tutee needed clarification on distinguishing ionic and covalent bonding patterns.
+Tutor used a mini lesson and guided examples to demonstrate naming steps.
+Tutee improved accuracy and completed several naming exercises successfully.
+
+⸻
+
+Navigate Report 27
+Student ID: 3703821
+
+Course: CHEM 1406
+Date & Time: September 22, 2025 — 12:30 PM to 1:00 PM
+Topic: Ionic Compounds with Polyatomic Ions; Naming Practice
+
+Assignments Discussed:
+• Worksheet section on naming polyatomic compounds
+
+Objectives of the Session:
+• Tutee will be able to correctly name ionic compounds containing polyatomic ions.
+
+Tutoring Skills Used:
+• G, F
+
+Appointment Summary:
+Tutee wanted help naming compounds with polyatomic ions.
+Tutor noticed that the tutee needed help identifying charges and formula patterns.
+Tutor used guided practice and feedback to reinforce naming conventions.
+Tutee improved steadily and was able to name additional compounds with minimal assistance.
+
+⸻
+
+Navigate Report 28
+Student ID: 5041826
+
+Course: BIOL 1406
+Date & Time: September 22, 2025 — 4:30 PM to 5:00 PM
+Topic: Introduction to Organelles; Lab Report Outline; Microsoft Word & Screenshot Tools
+
+Assignments Discussed:
+• Lab report outline and introduction to organelles
+• How to use Command + Shift + 4 to screenshot on Mac
+
+Objectives of the Session:
+• Tutee will be able to identify major organelles and properly outline a lab report using Word tools.
+
+Tutoring Skills Used:
+• M, R, F
+
+Appointment Summary:
+Tutee wanted help understanding organelles and formatting a lab report.
+Tutor noticed that the tutee needed guidance navigating Word and locating screenshot functions.
+Tutor used a mini lesson and directed the tutee to step-by-step resources.
+Tutee followed instructions successfully and practiced formatting skills.
+
+⸻
+
+Navigate Report 29
+Student ID: 3389796
+
+Course: CHEM 1411
+Date & Time: September 24, 2025 — 12:30 PM to 1:00 PM
+Topic: Planck’s Constant, Speed of Light, Frequency, Wavelength
+
+Assignments Discussed:
+• Worksheet on c = λν and E = hν calculations
+
+Objectives of the Session:
+• Tutee will be able to calculate frequency, wavelength, and energy using light equations.
+
+Tutoring Skills Used:
+• M, G
+
+Appointment Summary:
+Tutee wanted help applying photon and wavelength equations.
+Tutor noticed that the tutee mixed up inverse relationships between wavelength and frequency.
+Tutor used guided formulas and numerical examples to reinforce understanding.
+Tutee showed improved accuracy and solved practice problems with more confidence.
+
+⸻
+
+Navigate Report 30
+Student ID: 3657203
+
+Course: CHEM 1412
+Date & Time: September 29, 2024 — 11:15 AM to 12:15 PM
+Topic: Rate Law, First and Second Order, Arrhenius Equation
+
+Assignments Discussed:
+• Chapter section on reaction kinetics, rate laws, and Arrhenius calculations
+
+Objectives of the Session:
+• Tutee will be able to identify reaction order and apply integrated rate laws and the Arrhenius equation.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help understanding rate laws and reaction order.
+Tutor noticed that the tutee struggled identifying units and constants in equations.
+Tutor used a mini lesson and guided examples to build comprehension.
+Tutee demonstrated improved ability to apply the correct formulas to kinetics problems.
+
+⸻
+
+Navigate Report 31
+Student ID: 3657203
+
+Course: CHEM 1412
+Date & Time: September 29, 2024 — 12:15 PM to 12:45 PM
+Topic: Catalysts and Intermediates; Half-Life for First and Second Order Reactions
+
+Assignments Discussed:
+• Worksheet on reaction mechanisms and half-life equations
+
+Objectives of the Session:
+• Tutee will be able to identify catalysts and intermediates and solve half-life problems using correct equations.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help with catalysts and reaction half-life calculations.
+Tutor noticed that the tutee needed help recognizing which step a catalyst participates in.
+Tutor used diagrams and guided practice to reinforce concepts.
+Tutee responded well and was able to complete half-life calculations independently.
+
+⸻
+
+Navigate Report 32
+Student ID: 3272245 (Bella)
+
+Course: BIOL 1406
+Date & Time: October 6, 2025 — 11:15 AM to 11:45 AM
+Topic: Cell Organelles and Structures; Levels of Organization; Cell Theory
+
+Assignments Discussed:
+• Worksheet and notes on cell organelles, structure levels, and types of cell theory
+
+Objectives of the Session:
+• Tutee will be able to identify cell organelles and describe different levels of biological organization and forms of cell theory.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help understanding organelles and biological organization.
+Tutor noticed the tutee needed help distinguishing between prokaryotic and eukaryotic features.
+Tutor used diagrams and guided questioning to clarify concepts.
+Tutee actively engaged and demonstrated improved recall by the end.
+
+⸻
+
+Navigate Report 33
+Student ID: 3272245 (Bella)
+
+Course: BIOL 1406
+Date & Time: October 13, 2025 — 3:00 PM to 4:00 PM
+Topic: Lipids, Phospholipids, Tonicity, Osmosis, Diffusion
+
+Assignments Discussed:
+• Sections covering membrane lipids, phospholipid bilayer, and membrane transport
+
+Objectives of the Session:
+• Tutee will be able to explain the structure of phospholipids, describe tonicity, and differentiate between osmosis, diffusion, and active transport.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help understanding phospholipids and membrane transport.
+Tutor noticed that the tutee needed clarification on how tonicity affects water movement in cells.
+Tutor used mini lessons, diagrams, and guided examples to explain transport processes.
+Tutee showed improved understanding and asked questions reflecting deeper engagement.
+
+⸻
+
+Navigate Report 34
+Student ID: 3272245 (Bella)
+
+Course: BIOL 1406
+Date & Time: October 25, 2025 — 12:30 PM to 1:30 PM
+Topic: Cellular Respiration; Cell Membrane; Mitochondria; Glycolysis; Pyruvate Oxidation; Krebs Cycle; Electron Transport Chain
+
+Assignments Discussed:
+• Chapter review on all stages of cellular respiration and mitochondrial structure
+
+Objectives of the Session:
+• Tutee will be able to summarize each stage of cellular respiration and identify major components of the mitochondrion.
+
+Tutoring Skills Used:
+• M, G, F, Q
+
+Appointment Summary:
+Tutee wanted help reviewing all stages of cellular respiration.
+Tutor noticed that the tutee needed support connecting mitochondrial structure to each stage of ATP production.
+Tutor used diagrams, guided questions, and structured review to reinforce sequencing.
+Tutee participated actively and demonstrated improved understanding of energy pathways.
+
+⸻
+
+Navigate Report 35
+Student ID: 3272245 (Bella)
+
+Course: BIOL 1406
+Date & Time: October 27, 2025 — 12:45 PM to 2:45 PM
+Topic: Photosynthesis; Chloroplast Structure; Light-Dependent and Light-Independent Reactions
+
+Assignments Discussed:
+• Chapter section on chloroplast anatomy and stages of photosynthesis
+
+Objectives of the Session:
+• Tutee will be able to describe chloroplast structure and distinguish between the light reactions and the Calvin cycle.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help understanding the stages of photosynthesis.
+Tutor noticed that the tutee needed help organizing the steps of the light-dependent reactions and the Calvin cycle.
+Tutor used diagrams, guided note-taking, and structured examples to reinforce each step.
+Tutee showed strong engagement and improved accuracy when summarizing both stages of photosynthesis.
+
+⸻
+
+Navigate Report 36
+Student ID: 3737023
+
+Course: BIOL 1408
+Date & Time: October 6, 2025 — 1:15 PM to 1:45 PM
+Topic: Metabolism, Cellular Respiration, Calvin Cycle, Lipids and Bilayer Membrane
+
+Assignments Discussed:
+• Review notes on metabolism, respiration, and photosynthesis
+
+Objectives of the Session:
+• Tutee will be able to explain how metabolism relates to respiration and photosynthesis and describe lipid bilayer structure.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help connecting metabolism to energy pathways.
+Tutor noticed that the tutee needed assistance organizing the steps of respiration and the Calvin cycle.
+Tutor used guided review and diagrams to build conceptual connections.
+Tutee responded positively and demonstrated better understanding during practice questions.
+
+⸻
+
+Navigate Report 37
+Student ID: 3754443
+
+Course: BIOL 1408
+Date & Time: October 8, 2025 — 10:15 AM to 10:45 AM
+Topic: Photosynthesis and Cellular Respiration
+
+Assignments Discussed:
+• Section comparing photosynthesis and respiration pathways
+
+Objectives of the Session:
+• Tutee will be able to compare inputs and outputs of both processes and explain how they are complementary.
+
+Tutoring Skills Used:
+• M, G
+
+Appointment Summary:
+Tutee wanted help understanding the relationship between photosynthesis and respiration.
+Tutor noticed that the tutee mixed up the products of each process.
+Tutor used comparison charts and guided explanation to reinforce key differences.
+Tutee improved understanding and completed summary questions accurately.
+
+⸻
+
+Navigate Report 38
+Student ID: 5000683
+
+Course: BIOL 1406
+Date & Time: October 8, 2025 — 1:15 PM to 1:30 PM
+Topic: Respiration and Metabolism (Anabolic, Catabolic, Aerobic, Anaerobic)
+
+Assignments Discussed:
+• Notes covering metabolic pathways and respiration types
+
+Objectives of the Session:
+• Tutee will be able to distinguish anabolic vs catabolic reactions and aerobic vs anaerobic respiration.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help reviewing metabolic processes.
+Tutor noticed that the tutee needed help relating definitions to biological examples.
+Tutor used mini explanations and guided examples.
+Tutee was able to summarize each term with improved clarity.
+
+⸻
+
+Navigate Report 39
+Student ID: 3607433
+
+Course: BIOL 1406
+Date & Time: October 8, 2025 — 1:30 PM to 2:00 PM
+Topic: Diffusion, Osmosis, Active and Passive Transport
+
+Assignments Discussed:
+• Worksheet on membrane transport mechanisms
+
+Objectives of the Session:
+• Tutee will be able to differentiate diffusion, osmosis, active transport, and passive transport.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help reviewing membrane transport.
+Tutor noticed that the tutee misunderstood the differences between passive and active movement.
+Tutor used diagrams and guided examples to clarify definitions.
+Tutee demonstrated improved accuracy when explaining each transport type.
+
+⸻
+
+Navigate Report 40
+Student ID: 3726303
+
+Course: BIOL 1406
+Date & Time: October 13, 2025 — 3:00 PM to 4:00 PM
+Topic: Cell Membrane, Diffusion, Active and Passive Transport
+
+Assignments Discussed:
+• Section on membrane structure and movement of molecules across the membrane
+
+Objectives of the Session:
+• Tutee will be able to describe the components of the cell membrane and differentiate between diffusion, osmosis, active transport, and passive transport.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help reviewing membrane structure and transport mechanisms.
+Tutor noticed that the tutee needed clarification on energy requirements for passive vs active transport.
+Tutor used diagrams and guided explanations to reinforce each transport process.
+Tutee clarified misunderstandings and demonstrated improved accuracy when answering review questions.
+
+⸻
+
+Navigate Report 41
+Student ID: 3272245 (Bella)
+
+Course: BIOL 1406
+Date & Time: October 18, 2025 — 1:00 PM to 2:30 PM
+Topic: Cellular Respiration; Redox Reactions; Labeling the Mitochondria (Intermembrane Space, Inner Membrane, Outer Membrane, Matrix); Glycolysis; NAD⁺/NADH Electron Carriers
+
+Assignments Discussed:
+• Chapter section on cellular respiration steps
+• Diagram labeling for mitochondrial structure
+• Redox reactions and electron carriers
+
+Objectives of the Session:
+• Tutee will be able to label key mitochondrial structures and explain how glycolysis, pyruvate oxidation, the Krebs cycle, and electron transport chain contribute to ATP production.
+• Tutee will be able to identify oxidation and reduction in metabolic pathways and describe the role of NAD⁺/NADH as electron carriers.
+
+Tutoring Skills Used:
+• M, G, F, Q
+
+Appointment Summary:
+Tutee wanted help understanding the full pathway of cellular respiration.
+Tutor noticed that the tutee needed clarification on how the structure of the mitochondria relates to where each stage occurs.
+Tutor used diagrams, guided questions, and step-by-step explanations of redox reactions and electron carriers to reinforce connections.
+Tutee engaged actively, completed labeling activities accurately, and demonstrated clearer understanding of how ATP is generated in each stage.
+
+⸻
+
+Navigate Report 42
+Student ID: 3726453
+
+Course: BIOL 1406
+Date & Time: September 22, 2025
+Topic: Scientific Observations
+
+Assignments Discussed:
+• Section covering scientific observations and basic principles of scientific inquiry
+
+Objectives of the Session:
+• Tutee will be able to distinguish between qualitative and quantitative observations and apply observation skills to biological scenarios.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help understanding what constitutes a scientific observation.
+Tutor noticed that the tutee needed clarification distinguishing observation from inference.
+Tutor used examples and guided practice to reinforce accurate identification of each type.
+Tutee became more confident and correctly applied observation skills to sample questions.
+
+⸻
+
+Navigate Report 43
+Student ID: 3824250
+
+Course: BIOL 1406
+Date & Time: (Date not provided — can be added if needed)
+Topic: Lab Report Writing; Forming a Hypothesis; Using Excel for Graphing; Understanding a Rubric and Outline
+
+Assignments Discussed:
+• Lab report assignment
+• How to form a testable hypothesis
+• How to use Excel to create graphs
+• How to read and outline a rubric
+
+Objectives of the Session:
+• Tutee will be able to write a clear, testable hypothesis, create graphs in Excel, and organize a lab report using the rubric as a guide.
+
+Tutoring Skills Used:
+• M, R, G, F
+
+Appointment Summary:
+Tutee wanted help understanding how to structure a lab report and create graphs.
+Tutor noticed that the tutee needed help interpreting the rubric and connecting it to the required sections of the report.
+Tutor used mini lessons, directed the tutee to Excel tools, and guided them through an outline process.
+Tutee responded well and was able to draft a clearer structure for the lab report.
+
+⸻
+
+Navigate Report 44
+Student ID: 3632524
+
+Course: CHEM 1411
+Date & Time: November 3, 2025 — 4:15 PM to 4:45 PM
+Topic: Lewis Structures; Electron Geometry; Molecular Geometry
+
+Assignments Discussed:
+• Worksheet on Lewis structures
+• Applying VSEPR theory to determine electron and molecular geometry
+
+Objectives of the Session:
+• Tutee will be able to draw Lewis structures and determine both electron geometry and molecular geometry using VSEPR rules.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help drawing Lewis structures and identifying molecular shapes.
+Tutor noticed that the tutee needed help placing lone pairs correctly and determining central atoms.
+Tutor used a mini lesson and guided examples to reinforce each step of the VSEPR process.
+Tutee gained confidence and was able to determine geometry for several practice molecules.
+
+⸻
+
+Navigate Report 45
+Student ID: 3731760
+
+Course: BIOL 1406
+Date & Time: (Duration: 11:15 AM – 3:00 PM)
+Topic: Cellular Respiration and Photosynthesis (Light-Dependent and Light-Independent Reactions)
+
+Assignments Discussed:
+• Full chapter review on cellular respiration
+• Light-dependent reactions and Calvin cycle
+• Comparison between respiration and photosynthesis
+
+Objectives of the Session:
+• Tutee will be able to describe each stage of cellular respiration and summarize the steps of photosynthesis, including reactants, products, and locations.
+
+Tutoring Skills Used:
+• M, G, F, Q
+
+Appointment Summary:
+Tutee wanted help reviewing cellular respiration and photosynthesis in preparation for an exam.
+Tutor noticed that the tutee needed help organizing steps and understanding energy flow between pathways.
+Tutor used diagrams, guided questions, and structured review to connect each stage.
+Tutee engaged well and demonstrated more accurate recall of both processes.
+
+⸻
+
+Navigate Report 46
+Student IDs: 3817720 & 3625842
+
+Course: BIOL 1406
+Date & Time: 11:15 AM – 3:00 PM
+Topic: Cellular Respiration and Photosynthesis (Light-Dependent and Independent)
+
+Assignments Discussed:
+• Overview of cellular respiration
+• Light reactions and Calvin cycle
+• Interrelationship of the two processes
+
+Objectives of the Session:
+• Tutees will be able to explain inputs/outputs of respiration and photosynthesis and link steps to ATP production.
+
+Tutoring Skills Used:
+• M, G, F, Q
+
+Appointment Summary:
+Tutees wanted help reviewing major energy pathways.
+Tutor noticed that both students needed help distinguishing between the electron transport chain and Calvin cycle.
+Tutor used illustrations and guided explanations to reinforce differences and similarities.
+Tutees improved their ability to walk through each process and answered review questions accurately.
+
+⸻
+
+Navigate Report 47
+Student ID: 3817720 + 2129839
+
+Course: BIOL 1406
+Date & Time: December 1, 2025 — 11:15 AM to 11:45 AM
+Topic: Mitosis vs Meiosis
+
+Assignments Discussed:
+• Comparison charts for mitosis and meiosis
+• Steps of each phase (prophase, metaphase, anaphase, telophase)
+
+Objectives of the Session:
+• Tutees will be able to differentiate mitosis and meiosis and identify what is being separated in each division.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutees wanted help understanding the differences between mitosis and meiosis.
+Tutor noticed that the tutees needed help identifying when homologous chromosomes vs sister chromatids separate.
+Tutor used side-by-side diagrams and guided examples to reinforce distinctions.
+Tutees showed improved clarity and were able to summarize each process.
+
+⸻
+
+Navigate Report 48
+Student ID: 3625842
+
+Course: BIOL 1406
+Date & Time: December 1, 2025 — 12:00 PM to 12:30 PM
+Topic: Punnett Squares (Monohybrid & Dihybrid Crosses)
+
+Assignments Discussed:
+• Genetics worksheet on monohybrid and dihybrid Punnett squares
+
+Objectives of the Session:
+• Tutee will be able to set up and solve monohybrid and dihybrid crosses and interpret genotypic and phenotypic ratios.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help reviewing Punnett squares.
+Tutor noticed that the tutee needed help distributing alleles correctly in a dihybrid cross.
+Tutor used guided practice and step-by-step modeling to reinforce the setup.
+Tutee improved accuracy and completed multiple crosses with greater confidence.
+
+⸻
+
+Navigate Report 49
+Student ID: 5030174
+
+Course: ARTS 1316
+Date & Time: December 8, 2025 — 11:00 AM to 12:00 PM
+Topic: Submitting Art Assignments on Brightspace; Using Genius Scan
+
+Assignments Discussed:
+• Uploading files to Brightspace
+• Scanning artwork with Genius Scan
+
+Objectives of the Session:
+• Tutee will be able to scan, format, and submit artwork correctly on Brightspace.
+
+Tutoring Skills Used:
+• M, R, G, F
+
+Appointment Summary:
+Tutee wanted help submitting art assignments online.
+Tutor noticed that the tutee needed help navigating upload settings and formatting scanned images.
+Tutor used step-by-step guidance and resources to walk through the submission process.
+Tutee successfully scanned and uploaded examples and demonstrated how to repeat the process.
+
+⸻
+
+Navigate Report 50
+Student ID: 3783298
+
+Course: BIOL 1408
+Date & Time: December 8, 2025 — 12:00 PM to 1:00 PM
+Topic: DNA Replication; Cellular Respiration; Photosynthesis; Cell Structure
+
+Assignments Discussed:
+• Section review on DNA replication
+• Overview of respiration and photosynthesis
+• Organelles involved in metabolism
+
+Objectives of the Session:
+• Tutee will be able to describe DNA replication steps and summarize major metabolic pathways and organelle functions.
+
+Tutoring Skills Used:
+• M, G, F
+
+Appointment Summary:
+Tutee wanted help preparing for a cumulative exam.
+Tutor noticed that the tutee needed help connecting organelle structure with metabolic processes.
+Tutor used review diagrams and guided explanations to reinforce connections.
+Tutee asked relevant questions and demonstrated better recall of major pathways.
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('toggleThemeBtn');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+    });
+  </script>
+</body>
+</html>
